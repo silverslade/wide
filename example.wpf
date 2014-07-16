@@ -1,0 +1,18 @@
+# Wide example project file
+
+ZCODEVERSION=5
+
+[FILES]
+F00=esempio.inf
+F01=esempio_game.inf
+F02=esempio_menu.inf
+
+[CLASSES]
+C00=Room
+C01=Prop
+C02=MyDoor
+C03=NPC
+
+[KEYWORDS]
+K00=attitude
+K01=turnsinside

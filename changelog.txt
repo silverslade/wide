@@ -1,0 +1,121 @@
+CHANGELOG WIDE
+==============
+
+2014-07-16
+- new git repository
+
+2013-07-15
+- WIDE 1.01.01
+- fixed static dll
+
+
+2013-07-15
+- WIDE 1.01.00
+- added language menu
+- added InformATE Spanish syntax
+- added checkbox for syntax for:
+    OTHERKEYWORDS
+    DIRECTIVES
+    STATEMENTS
+    INFORMATE
+    CUSTOM1
+    CUSTOM2
+    CUSTOM3
+
+
+
+2013-07-07
+- WIDE 1.00.00
+
+2013-07-06
+- fixed new autompletion
+- hardcoded hotkeys (removed hotkeys config from wide.ini file)
+- change background for selected line
+- fixed blc under linux (should use absolute path for RES file)
+- Makelower to poplist words
+
+
+2013-07-05
+- fixed Makefile (to compile under Arch)
+- fixed path with " under linux systems (now it compiles)
+- fixed autocomplete window performance (under linux)
+
+
+
+2008-08-29
+- compatibilita' con linux
+
+2008-07-18
+- Creazione dei file z-blorb
+- Aggiunta voce "reset markers"
+
+2008-07-16
+- Aggiornamento dell'albero
+
+2008-07-14
+- Aggiunta ricerca di oggetti nel file in editing e nei file aperti
+- Aggiunta gestione del formato zcode nei file di progetto
+
+2008-06-20
+- Risolto bug su albero, ora gestisce anche oggetti senza nome interno
+- Risolto bug su sostituzione automatica, modifica sintassi in wide.ini
+
+2008-05-28
+- Aggiunta gestione "next tab"/"previous tab"
+- Ripristinata voce di menu' per unindent
+
+2008-05-16
+- Rivista la lista delle keywords in wide.ini
+
+2008-04-17
+- Modificata sintassi per sostituzione automatica nel file wide.ini
+
+2008-04-16
+- Risolto bug commenti inizianti per # (usato lexer MatLab)
+- Risolto bug autocompletion dentro virgolette
+
+2008-04-14
+- Risolto bug apertura file non inform
+
+2008-04-09
+- Inserita sostituzione automatica caratteri
+
+2008-04-07
+- Nel file ini keywords divise in categorie
+- Wide ordina automaticamente le keyword per l'autocompletion
+- Nuova gestione progetti (con keyword aggiuntive e classi
+    che appaiono nell'albero
+
+2008-04-04
+- portato a 8 il numero max di documenti pdf
+- aggiunta voce Build All blorb file
+- rinominato menu inform -> zcode, voci blb -> blorb
+- aggiunta voce per estensione blorb in wide.ini
+
+2008-03-23
+- sorgenti su cvs di berlios.de
+
+2008-03-19
+- nuova icona
+- Modifiche di Paolo
+
+
+2007-09-01
+- Tips of the day
+- Icone nei menu
+- syntax highlight
+- autocompletion
+- compilazione zcode, ulx
+
+
+2007-08-12
+- Aggiunto file di configurazione (wxFileConfig)
+- Aggiunto CTRL+S per salvare il file corrente
+
+2007-08-08
+- aggiunto tasto cancel quando chiudo
+
+2007-08-05
+- Aggiunti nome e descrizione delle costanti
+- Console attiva (test di compilazione file attuale senza switch)
+- Aggiunte le principali icone della toolbar
