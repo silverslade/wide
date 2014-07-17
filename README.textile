@@ -1,11 +1,9 @@
-WIDE - WxWidgets IDE for Inform 6
-=================================
+h1. WIDE - WxWidgets IDE for Inform 6
 
 WIDE is an Integrated Development Environment (IDE) for the Inform 6 Language.
-
 Wide is a win32 Editor for Inform6: is an Integrated Development Environment (IDE), written entirely in C++/WxWidgets, for the creation of text adventures based on Graham Nelson's Inform6 Language. With Wide it's possible to edit, compile and run a text adventure in the z-code and glulx formats.
 
-Main Features:
+h2. Main Features:
 
 * Written in C++ (using the wxWidgets Library)
 * Wide runs on Win32 / Linux systems
@@ -17,21 +15,20 @@ Main Features:
 * Objects tree and Syntax highlight is customizable
 * Wide is portable: it can be started from an USB key/pen
 
-Authors:
+h2. Authors:
 * Alessandro Schillaci
 * Paolo Lucchesi
 
-License:
+h2. License:
 Wide is an open source project (GNU GPL License).
 
-Thanks to:
+h2. Thanks to:
 Urbatain, Christof Menear and Eric Forgeot for the wide translation in spanish, german and french.
 Josè Manuel, for hints, suggestions and testing
 
+h2. Install
 
-INSTALL
-
-Install on Linux:
+h3. Install on Linux:
 
 1) install runtime wxgtk2.8
 2) make
@@ -39,7 +36,7 @@ Install on Linux:
 you shouldn't use "--as-needed" flag, use "--no-as-needed" instead
 
 
-Install on Windows:
+h3. Install on Windows:
 
 1) install and compile wxwidgets (using static=0 monolithic=1)
 2) install MinGW
