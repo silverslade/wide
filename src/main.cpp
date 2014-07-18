@@ -1857,8 +1857,8 @@ void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
     info.SetName(_(NOMEAPPLICAZIONE));
     info.SetVersion(_(VERSIONE));
     info.SetDescription(_(DESCRIZIONE));
-    info.SetCopyright(_T("(C) 2008 - 2013 silver.slade@tiscali.it"));
-    info.SetWebSite(_T("http://wide.berlios.de/"), _T("Home page"));
+    info.SetCopyright(_T("(C) 2008 - 2014 silver.slade@tiscali.it"));
+    info.SetWebSite(_T("https://github.com/silverslade/wide"), _T("Home page"));
     info.AddDeveloper(_T("Alessandro Schillaci"));
     info.AddDeveloper(_T("Paolo Lucchesi"));
     info.AddTranslator(_T("Urbatain (Spanish)"));

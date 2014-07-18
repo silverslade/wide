@@ -18,6 +18,10 @@
 #
 # 3) then you can compile wide under windows using this makefile and MinGW
 #
+# cd wide
+# cd src
+# mingw32-make -f makefile.gcc
+#
 # ########################################################################
 
 
