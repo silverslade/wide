@@ -20,9 +20,11 @@ h2. Authors:
 * Paolo Lucchesi
 
 h2. License:
+
 Wide is an open source project (GNU GPL License).
 
 h2. Thanks to:
+
 Urbatain, Christof Menear and Eric Forgeot for the wide translation in spanish, german and french.
 Josè Manuel, for hints, suggestions and testing
 
