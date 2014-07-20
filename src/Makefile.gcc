@@ -4,19 +4,16 @@
 #
 # This file is for MinGW GCC compiler under Windows
 #
+# NEEDED: wxwidgets 3.0
+#
 # Note:
 #
-# 1) You should compile wxwidgets as static library and monolithic:
+# 1) You should compile wxwidgets as static library and monolithic=0
 # cd /buiild
-# mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=1 BUILD=release UNICODE=1 
+# mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=0 BUILD=release UNICODE=1 
 #
-# 2) and compile the STC contrib
-# cd contrib
-# cd build
-# cd stc
-# mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=1 BUILD=release UNICODE=1 
 #
-# 3) then you can compile wide under windows using this makefile and MinGW
+# 2) then you can compile wide under windows using this makefile and MinGW
 #
 # cd wide
 # cd src
@@ -25,11 +22,11 @@
 # ########################################################################
 
 
-# #####################################################
+# ################################################################
 # CONFIGURE THESE PARAMETERS TO MATCH YOUR WXWIDGETS INSTALLATION
-# #####################################################
+# ################################################################
 
-WXHOME := C:/sviluppo/wxWidgets-2.8.12
+WXHOME := C:/wxWidgets-3.0.1
 OUTPUTPATH = C:/temp
 
 # SETUP.H INCLUDED FOR STATIC
@@ -49,12 +46,11 @@ DESTPATH = $(OUTPUTPATH)/$(TARGET)
 SOURCES := edit.cpp main.cpp prefs.cpp
 CPPFLAGS = -I$(WXHOME)/include $(SETUPH) $(CONTRIB) -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__ -DUNICODE=1
 CXXFLAGS = -L$(WXHOME)/lib/gcc_lib 
-LDFLAGS = -lwxmsw28u_stc -lwxmsw28u  -lwxregexu  -lm -lgdi32 -lcomdlg32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lopengl32 -mwindows  -lwxtiff -lwxjpeg -lwxpng -lwxzlib  -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32 -static-libgcc -static-libstdc++
+LDFLAGS = -lwxmsw30u_stc -lwxmsw30u -lwxbase30u -lwxscintilla -lwxregexu  -lm -lgdi32 -lcomdlg32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lopengl32 -mwindows  -lwxtiff -lwxjpeg -lwxpng -lwxzlib  -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32 -static-libgcc -static-libstdc++
 
 all:
 	$(warning Building...)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(SOURCES) -o $(DESTPATH) $(LDFLAGS) wide.res
-	$(STRIP) -s $(DESTPATH)
 
 clean: 
 	$(warning Cleaning...)

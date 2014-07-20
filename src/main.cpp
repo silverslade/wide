@@ -1,9 +1,10 @@
 //////////////////////////////////////////////////////////////////////////////
 // File:        main.cpp
 // Purpose:     Wide Inform 6 Editor
-// Author:      schillacia@users.berlios.de
+// Author:      alessandro.schillaci@gmail.com
 // License:     GNU GPL
 //////////////////////////////////////////////////////////////////////////////
+  
   #include <wx/wx.h>
   #include "wx/aui/aui.h"
   #include "wx/treectrl.h"  
@@ -47,14 +48,22 @@
   #include "edit.h"
   #include "myframe.h"
 
-  wxFileConfig *pConfig;       
+  wxFileConfig *pConfig;    
 
+ // #define wxDEBUG_LEVEL 0  
+ //#define NDEBUG
+ //#ifdef NDEBUG
+ //  #define wxDEBUG_LEVEL 0
+ //#endif
+ 
   // our normal wxApp-derived class, as usual
  class MyApp : public wxApp {
  public:
  
    bool OnInit()
    {
+
+   
      // Load config file
      pConfig = new wxFileConfig(
         _T(NOMEAPPLICAZIONE),
@@ -729,7 +738,7 @@ void MyFrame::OnSingleEdit (wxCommandEvent &evt) {
     // Recupero l'edit attuale e processo l'evento
     Edit* e = (Edit*) auinotebook->GetPage(auinotebook->GetSelection());
     if (e) {
-        e->ProcessEvent (evt);
+        GetEventHandler()->ProcessEvent (evt);
     }        
 }
 
@@ -1457,7 +1466,7 @@ void MyFrame::OnNotebookPageClose(wxAuiNotebookEvent& evt)
 
 void MyFrame::OnExit (wxCommandEvent &event) {
     int pannelli = auinotebook->GetPageCount();
-    for (int i=0; i<=pannelli ;i++){
+    for (int i=0; i<pannelli ;i++){
         Edit* e = (Edit*) auinotebook->GetPage(i);
         wxString titolo = auinotebook->GetPageText(i);
         if (e) {
@@ -1483,7 +1492,7 @@ void MyFrame::OnExit (wxCommandEvent &event) {
 
 void MyFrame::OnClose (wxCloseEvent &event) {
     int pannelli = auinotebook->GetPageCount();
-    for (int i=0; i<=pannelli ;i++){
+    for (int i=0; i<pannelli ;i++){
         Edit* e = (Edit*) auinotebook->GetPage(i);
         wxString titolo = auinotebook->GetPageText(i);
         if (e) {
@@ -1522,10 +1531,10 @@ void MyFrame::OnEdit (wxCommandEvent &event) {
     }    
     
     int pannelli = auinotebook->GetPageCount();
-    for (int i=0; i<=pannelli ;i++){
+    for (int i=0; i<pannelli ;i++){
         Edit* e = (Edit*) auinotebook->GetPage(i);
         if (e) {
-            e->ProcessEvent (event);
+            GetEventHandler()->ProcessEvent (event);
         }
     }       
 }
@@ -1534,7 +1543,7 @@ bool MyFrame::checkOpenFile(wxString path)
 {
     bool result = false;
     int pannelli = auinotebook->GetPageCount();
-    for (int i=0; i<=pannelli-1 ;i++) {
+    for (int i=0; i<pannelli ;i++) {
         Edit* e = (Edit*) auinotebook->GetPage(i);
         wxString nome = e->GetFilename();
         if (path.Cmp(nome)==0){
@@ -1908,9 +1917,10 @@ void MyFrame::OnUpdateTreeRegularExpression(wxString text, wxTreeItemId root, wx
     items.Add(tree->AppendItem(root, nome, 0));
     
     while ( re.Matches(text) ){
+		size_t occorrenze = re.GetMatchCount();
         size_t start, len, n=0;
         int i=0;
-        while (re.GetMatch(&start, &len, n)){
+        while (n<occorrenze && re.GetMatch(&start, &len, n)){
             n+=1;
         }
         if (text[start-1]=='\"' && keepquote) {start--; len++; }
@@ -1936,7 +1946,7 @@ void MyFrame::OnUpdateTree()
     wxTreeItemId cid, cen;
     wxString cname;
     wxArrayString memo;
-    cid = tree->GetFirstChild(wroot, ck);
+    if (cid.IsOk()) cid = tree->GetFirstChild(wroot, ck);
     while (cid.IsOk()) {
         if (tree->ItemHasChildren(cid)) {
           if (tree->IsExpanded(cid)) cname = _T("+") + tree->GetItemText(cid);
@@ -1947,7 +1957,7 @@ void MyFrame::OnUpdateTree()
         cid = tree->GetNextChild(wroot, ck);
     }
     cid = tree->GetFirstVisibleItem();
-    wxString firstvis = tree->GetItemText(cid);
+    wxString firstvis = cid.IsOk()?tree->GetItemText(cid):_T(" ");
     
     wxString text = e->GetText();
     tree->DeleteAllItems();    
@@ -1978,7 +1988,7 @@ void MyFrame::OnUpdateTree()
     }
     
     wroot = tree->GetRootItem();
-    cid = tree->GetFirstChild(wroot, ck);
+    if (cid.IsOk()) cid = tree->GetFirstChild(wroot, ck);
     while (cid.IsOk()) {
         cname = tree->GetItemText(cid);
         for (size_t i = 0; i<memo.GetCount(); i++) {
@@ -1990,11 +2000,11 @@ void MyFrame::OnUpdateTree()
     
     // Scroll all'inizio dell'albero
     tree->ScrollTo(root);
-    cid = tree->GetFirstChild(wroot, ck);
+    if (cid.IsOk()) cid = tree->GetFirstChild(wroot, ck);
     bool brf = false;
     while (cid.IsOk()) {
         if ((tree->GetItemText(cid)) == firstvis) { tree->ScrollTo(cid); break; }
-        cen = tree->GetFirstChild(cid, ck2);
+        if (cen.IsOk()) cen = tree->GetFirstChild(cid, ck2);
         while (cen.IsOk()) {
             if ((tree->GetItemText(cen)) == firstvis) { tree->ScrollTo(cen); brf = true; break; }
             cen = tree->GetNextChild(cid, ck2);
@@ -2293,41 +2303,39 @@ wxToolBar* MyFrame::CreateToolBarCtrl()
     tb2->SetToolBitmapSize(wxSize(16,16));
    
    
-    tb2->AddTool(ID_LoadFile, fileopen_xpm,MENU_FILE_OPENFILE);
-    tb2->AddTool(ID_NewFile, new_xpm,MENU_FILE_NEWFILE);    
-    tb2->AddTool(ID_Save_File, filesave_xpm, MENU_FILE_SAVEFILE);
-//    tb2->AddTool(103, filesaveas_xpm, "Save File as...");
-    tb2->AddTool(ID_Save_All, filesaveall_xpm, MENU_FILE_SAVEALL);
+    tb2->AddTool(ID_LoadFile, MENU_FILE_OPENFILE, fileopen_xpm);
+    tb2->AddTool(ID_NewFile, MENU_FILE_NEWFILE, new_xpm);    
+    tb2->AddTool(ID_Save_File, MENU_FILE_SAVEFILE, filesave_xpm );
+    tb2->AddTool(ID_Save_All, MENU_FILE_SAVEALL, filesaveall_xpm);
     tb2->AddSeparator(); 
     
-    tb2->AddTool(ID_PreviousPage, back_xpm,MENU_FILE_PREVIOUSTAB);
-    tb2->AddTool(ID_NextPage, forward_xpm,MENU_FILE_NEXTTAB);
+    tb2->AddTool(ID_PreviousPage, MENU_FILE_PREVIOUSTAB, back_xpm);
+    tb2->AddTool(ID_NextPage, MENU_FILE_NEXTTAB, forward_xpm);
     tb2->AddSeparator();
 
-    tb2->AddTool(wxID_UNDO, undo_xpm,MENU_EDIT_UNDO);
-    tb2->AddTool(wxID_REDO, redo_xpm,MENU_EDIT_REDO);
+    tb2->AddTool(wxID_UNDO, MENU_EDIT_UNDO, undo_xpm);
+    tb2->AddTool(wxID_REDO, MENU_EDIT_REDO, redo_xpm);
     tb2->AddSeparator(); 
     
-    tb2->AddTool(wxID_COPY, copy_xpm,MENU_EDIT_COPY);
-    tb2->AddTool(wxID_CUT, cut_xpm,MENU_EDIT_CUT);
-    tb2->AddTool(wxID_PASTE, paste_xpm,MENU_EDIT_PASTE);
-    tb2->AddTool(ID_FindBack, findback_xpm,MENU_SEARCH_FIND_BACKWARDS);   //PL
-    tb2->AddTool(ID_Find, find_xpm,MENU_SEARCH_FIND);    //PL
-//    tb2->AddTool(108, findrepl_xpm,"Find and Replace");
-    tb2->AddTool(ID_FindObjectLocal, findobject_xpm,MENU_SEARCH_FIND_OBJECT);    //PL
-    tb2->AddTool(ID_FindObjectGlobal, findobjectg_xpm,MENU_SEARCH_FIND_OBJECT_IN_FILE);    //PL    
+    tb2->AddTool(wxID_COPY, MENU_EDIT_COPY, copy_xpm);
+    tb2->AddTool(wxID_CUT, MENU_EDIT_CUT, cut_xpm);
+    tb2->AddTool(wxID_PASTE, MENU_EDIT_PASTE, paste_xpm);
+    tb2->AddTool(ID_FindBack, MENU_SEARCH_FIND_BACKWARDS, findback_xpm);   //PL
+    tb2->AddTool(ID_Find, MENU_SEARCH_FIND, find_xpm);    //PL
+    tb2->AddTool(ID_FindObjectLocal, MENU_SEARCH_FIND_OBJECT, findobject_xpm);    //PL
+    tb2->AddTool(ID_FindObjectGlobal, MENU_SEARCH_FIND_OBJECT_IN_FILE,findobjectg_xpm);    //PL    
     tb2->AddSeparator();
     
-    tb2->AddTool(ID_Compile, compilezcode_xpm, MESSAGES_COMPILEZCODE);
-    tb2->AddTool(ID_RunZcode, exezcode_xpm, MESSAGES_RUNZCODE);
+    tb2->AddTool(ID_Compile, MESSAGES_COMPILEZCODE, compilezcode_xpm);
+    tb2->AddTool(ID_RunZcode, MESSAGES_RUNZCODE, exezcode_xpm);
     tb2->AddSeparator();
     
-    tb2->AddTool(ID_CompileUlx, compileulx_xpm, MESSAGES_COMPILEULX);
-    tb2->AddTool(ID_RunUlx, exeglulx_xpm, MESSAGES_RUNGLULX);        
+    tb2->AddTool(ID_CompileUlx, MESSAGES_COMPILEULX, compileulx_xpm);
+    tb2->AddTool(ID_RunUlx, MESSAGES_RUNGLULX, exeglulx_xpm);        
     tb2->AddSeparator();
     
-    tb2->AddTool(ID_About, help_xpm, MENU_HELP_ABOUT);
-    tb2->AddTool(ID_Exit, quit_xpm, MENU_FILE_QUIT);
+    tb2->AddTool(ID_About, MENU_HELP_ABOUT, help_xpm );
+    tb2->AddTool(ID_Exit, MENU_FILE_QUIT, quit_xpm);
     tb2->Realize();
     
     return tb2;
