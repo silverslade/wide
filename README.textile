@@ -46,10 +46,10 @@ h3. Install on Windows:
 4) compile it
 
 <pre><code>
-	cd c:/wxWidgets-3.0.1
-	cd build
-	cd msw
-	mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=0 BUILD=release UNICODE=1 
+cd c:/wxWidgets-3.0.1
+cd build
+cd msw
+mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=0 BUILD=release UNICODE=1 
 </code></pre>
 	
 (in case of errors rename C:\MinGW\msys in C:\MinGW\OLDmsys and recompile for a msys uncompatibilty)
@@ -61,7 +61,7 @@ after compiling wxwidgets, unrename C:\MinGW\OLDmsys to C:\MinGW\msys
 7) clone the wide repository 
 
 <pre><code>
-	git clone https://github.com/silverslade/wide
+git clone https://github.com/silverslade/wide
 </code></pre>
 
 8) edit the wide/makefile.gcc to fit your directories before compile it
@@ -69,9 +69,9 @@ after compiling wxwidgets, unrename C:\MinGW\OLDmsys to C:\MinGW\msys
 9) then you can compile wide under windows using this makefile and MinGW
 
 <pre><code>
-	cd wide
-	cd src
-	mingw32-make -f makefile.gcc
+cd wide
+cd src
+mingw32-make -f makefile.gcc
 </code></pre>
 
 
