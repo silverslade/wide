@@ -44,10 +44,11 @@ h3. Install on Windows:
 2) download wxwidgets 3.0.1 or above from https://www.wxwidgets.org/downloads/
 3) unzip wxwidgets 3.0 (under c:/wxWidgets-3.0.1)
 4) compile it
-# cd c:/wxWidgets-3.0.1
-# cd build
-# cd msw
-# mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=0 BUILD=release UNICODE=1 
+
+	cd c:/wxWidgets-3.0.1
+	cd build
+	cd msw
+	mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=0 BUILD=release UNICODE=1 
 
 (in case of errors rename C:\MinGW\msys in C:\MinGW\OLDmsys and recompile for a msys uncompatibilty)
 after compiling wxwidgets, unrename C:\MinGW\OLDmsys to C:\MinGW\msys 
@@ -56,14 +57,16 @@ after compiling wxwidgets, unrename C:\MinGW\OLDmsys to C:\MinGW\msys
 (or install github as client windows from https://windows.github.com/)
 
 7) clone the wide repository 
-# git clone https://github.com/silverslade/wide
+
+	git clone https://github.com/silverslade/wide
 
 8) edit the wide/makefile.gcc to fit your directories before compile it
 
 9) then you can compile wide under windows using this makefile and MinGW
-# cd wide
-# cd src
-# mingw32-make -f makefile.gcc
+
+	cd wide
+	cd src
+	mingw32-make -f makefile.gcc
 
 
 
