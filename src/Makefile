@@ -1,17 +1,17 @@
 # Makefile for UNIX systems
 #
-# Found to work fine under Linux with unicode version of wxGTK 2.8
+# Found to work fine under Linux with unicode version of wxGTK 3.0
 
 #CXX   = g++ -DSHARED=0 -DRUNTIME_LIBS=static -DMONOLITHIC=1 -DUNICODE=1 
 CXX   = g++
 STRIP = strip
-PARAMS = -DSHARED=0 -DRUNTIME_LIBS=static -DMONOLITHIC=1 -DUNICODE=1
+PARAMS = -DSHARED=0 -DRUNTIME_LIBS=static -DMONOLITHIC=1 -DUNICODE=1 
 
 WX_FLAGS = `wx-config --debug=no --cxxflags`
 WX_LIBS  = `wx-config --debug=no --libs aui,stc`
 
 # UNCOMMENT THIS IN CASE OF LINKING ERRORS
-WX_LIBS =  -pthread -Wl,-O1,--sort-common,-z,relro -lwx_gtk2u_richtext-2.8 -lwx_gtk2u_aui-2.8 -lwx_gtk2u_xrc-2.8 -lwx_gtk2u_qa-2.8 -lwx_gtk2u_html-2.8 -lwx_gtk2u_adv-2.8 -lwx_gtk2u_core-2.8 -lwx_baseu_xml-2.8 -lwx_baseu_net-2.8 -lwx_baseu-2.8  -lwx_gtk2u_aui-2.8 -lwx_gtk2u_stc-2.8 -lwx_baseu-2.8 
+WX_LIBS =  -pthread -Wl,-O1,--sort-common,-z,relro -lwx_gtk2u_richtext-3.0 -lwx_gtk2u_aui-3.0 -lwx_gtk2u_xrc-3.0 -lwx_gtk2u_qa-3.0 -lwx_gtk2u_html-3.0 -lwx_gtk2u_adv-3.0 -lwx_gtk2u_core-3.0 -lwx_baseu_xml-3.0 -lwx_baseu_net-3.0 -lwx_baseu-3.0  -lwx_gtk2u_aui-3.0 -lwx_gtk2u_stc-3.0 -lwx_baseu-3.0 
 
 CXXFLAGS = $(WX_FLAGS) 
 LIBS     = $(WX_LIBS)
