@@ -40,11 +40,32 @@ you shouldn't use "--as-needed" flag, use "--no-as-needed" instead
 
 h3. Install on Windows:
 
-1) install and compile wxwidgets (using static=0 monolithic=1)
-2) install MinGW
-3) compile stc oomponent
-4) cd wide
-5) edit makefile.gcc to fit to your paths
-6) mingw32-make -f makefile.gcc
+1) download and install mingw from here http://sourceforge.net/projects/mingw/files/latest/download
+2) download wxwidgets 3.0.1 or above from https://www.wxwidgets.org/downloads/
+3) unzip wxwidgets 3.0 (under c:/wxWidgets-3.0.1)
+4) compile it
+# cd c:/wxWidgets-3.0.1
+# cd build
+# cd msw
+# mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=0 BUILD=release UNICODE=1 
+
+(in case of errors rename C:\MinGW\msys in C:\MinGW\OLDmsys and recompile for a msys uncompatibilty)
+after compiling wxwidgets, unrename C:\MinGW\OLDmsys to C:\MinGW\msys 
+
+6) install GIT as command line from http://git-scm.com/download/win
+(or install github as client windows from https://windows.github.com/)
+
+7) clone the wide repository 
+# git clone https://github.com/silverslade/wide
+
+8) edit the wide/makefile.gcc to fit your directories before compile it
+
+9) then you can compile wide under windows using this makefile and MinGW
+# cd wide
+# cd src
+# mingw32-make -f makefile.gcc
+
+
+
 
 
