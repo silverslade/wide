@@ -32,9 +32,21 @@ h2. Install
 
 h3. Install on Linux:
 
-1) install runtime wxgtk2.8
-2) make
-3) in case of errors uncomment line starting by "WX_LIBS" (see the makefile)
+1) install runtime wxgtk3.0
+2) clone the wide repository 
+
+<pre><code>git clone https://github.com/silverslade/wide
+</code></pre>
+
+3) compile wide
+
+<pre><code>cd wide
+cd src
+make
+</code></pre>
+
+Note:
+* in case of errors uncomment line starting by "WX_LIBS" (see the makefile)
 you shouldn't use "--as-needed" flag, use "--no-as-needed" instead
 
 
@@ -45,8 +57,7 @@ h3. Install on Windows:
 3) unzip wxwidgets 3.0 (under c:/wxWidgets-3.0.1)
 4) compile it
 
-<pre><code>
-cd c:/wxWidgets-3.0.1
+<pre><code>cd c:/wxWidgets-3.0.1
 cd build
 cd msw
 mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=0 BUILD=release UNICODE=1 
@@ -60,16 +71,14 @@ after compiling wxwidgets, unrename C:\MinGW\OLDmsys to C:\MinGW\msys
 
 7) clone the wide repository 
 
-<pre><code>
-git clone https://github.com/silverslade/wide
+<pre><code>git clone https://github.com/silverslade/wide
 </code></pre>
 
 8) edit the wide/makefile.gcc to fit your directories before compile it
 
 9) then you can compile wide under windows using this makefile and MinGW
 
-<pre><code>
-cd wide
+<pre><code>cd wide
 cd src
 mingw32-make -f makefile.gcc
 </code></pre>
