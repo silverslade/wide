@@ -33,6 +33,12 @@ h2. Install
 h3. Install on Linux:
 
 1) install runtime wxgtk3.0
+Archlinux example:
+<pre><code>sudo pacman -S wxgtk git
+sudo pacman -S extra/wxgtk
+sudo pacman -S gtk2hs-buildtools
+</code></pre>
+
 2) clone the wide repository 
 
 <pre><code>git clone https://github.com/silverslade/wide
