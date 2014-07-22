@@ -66,7 +66,7 @@ h3. Install on Windows:
 <pre><code>cd c:/wxWidgets-3.0.1
 cd build
 cd msw
-mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=0 BUILD=release UNICODE=1 
+mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=1 BUILD=release UNICODE=1 
 </code></pre>
 	
 (in case of errors rename C:\MinGW\msys in C:\MinGW\OLDmsys and recompile for a msys uncompatibilty)
