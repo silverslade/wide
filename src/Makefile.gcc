@@ -46,7 +46,7 @@ DESTPATH = $(OUTPUTPATH)/$(TARGET)
 SOURCES := edit.cpp main.cpp prefs.cpp
 CPPFLAGS = -I$(WXHOME)/include $(SETUPH) $(CONTRIB) -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__ -DUNICODE=1
 CXXFLAGS = -L$(WXHOME)/lib/gcc_lib 
-LDFLAGS = -lwxmsw30u_stc -lwxmsw30u -lwxbase30u -lwxscintilla -lwxregexu  -lm -lgdi32 -lcomdlg32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lopengl32 -mwindows  -lwxtiff -lwxjpeg -lwxpng -lwxzlib  -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32 -static-libgcc -static-libstdc++
+LDFLAGS = -lwxmsw30u -lwxscintilla -lwxregexu -lm -lgdi32 -lcomdlg32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lopengl32 -mwindows  -lwxtiff -lwxjpeg -lwxpng -lwxzlib  -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32 -static-libgcc -static-libstdc++
 
 all:
 	$(warning Building...)
