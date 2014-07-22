@@ -4,15 +4,15 @@
   #include "wx/aui/aui.h"
   #include "wx/treectrl.h"
 
-  // COSTANTI
+  // CONSTANTS
   #define SEP " - "
-  #define VERSIONE "1.2.0"
-  #define BUILD " (build 20140718001) "
+  #define VERSIONE "1.2.1"
+  #define BUILD " (build 20140722001) "
   #define NOMEAPPLICAZIONE "WIDE"  
   #define DESCRIZIONE "Wx Inform Development Environment"    
   #define CONFIG_FILE "wide.ini"  
 
-  // Icone
+  // ICONS
   #include "images/wide.xpm"
 
 class Edit;

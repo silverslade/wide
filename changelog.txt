@@ -1,19 +1,27 @@
 CHANGELOG WIDE
 ==============
 
+NF  = New Feature
+BFX = Bug Fix
+
+2014-07-22
+- WIDE VERSION 1.2.1
+- [NF] console scroll to end
+- [BFX] error on singledit
+ 
 2014-07-20
-- Wide Version 1.2.0
+- WIDE VERSION 1.2.0
 - updated wide sources to compile with wxwidgets 3.0.1
 
 2014-07-16
 - new git repository
 
 2013-07-15
-- WIDE 1.01.01
+- WIDE VERSION 1.01.01
 - fixed static dll
 
 2013-07-15
-- WIDE 1.01.00
+- WIDE VERSION 1.01.00
 - added language menu
 - added InformATE Spanish syntax
 - added checkbox for syntax for:

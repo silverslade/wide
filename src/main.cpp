@@ -738,7 +738,7 @@ void MyFrame::OnSingleEdit (wxCommandEvent &evt) {
     // Recupero l'edit attuale e processo l'evento
     Edit* e = (Edit*) auinotebook->GetPage(auinotebook->GetSelection());
     if (e) {
-        GetEventHandler()->ProcessEvent (evt);
+        e->GetEventHandler()->ProcessEvent(evt);
     }        
 }
 
@@ -1391,7 +1391,8 @@ void MyFrame::OnClear(){
 void MyFrame::OnOutput(wxString string) {
     console->SetReadOnly(false);    
     console->AppendText(string);
-    console->SetReadOnly(true);    
+    console->SetReadOnly(true);   
+    console->ScrollToEnd(); 
 }
 
 // AS
@@ -1534,7 +1535,7 @@ void MyFrame::OnEdit (wxCommandEvent &event) {
     for (int i=0; i<pannelli ;i++){
         Edit* e = (Edit*) auinotebook->GetPage(i);
         if (e) {
-            GetEventHandler()->ProcessEvent (event);
+            e->GetEventHandler()->ProcessEvent (event);
         }
     }       
 }
@@ -1574,7 +1575,7 @@ void MyFrame::setNewStc(Edit* stc) {
     }
 
     stc->SetCaretLineVisible(true);
-    //stc->SetCaretLineBackground(wxColour(152,248,248,wxALPHA_OPAQUE));
+    stc->SetCaretLineBackground(wxColour(152,248,248,wxALPHA_OPAQUE));
     stc->AutoCompSetIgnoreCase(true);
     stc->AutoCompSetAutoHide(true);
     //stc->CallTipSetForegroundHighlight(wxColour(52,248,248));
@@ -1866,7 +1867,7 @@ void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
     info.SetName(_(NOMEAPPLICAZIONE));
     info.SetVersion(_(VERSIONE));
     info.SetDescription(_(DESCRIZIONE));
-    info.SetCopyright(_T("(C) 2008 - 2014 silver.slade@tiscali.it"));
+    info.SetCopyright(_T("(C) 2008 - 2014 Alessandro Schillaci"));
     info.SetWebSite(_T("https://github.com/silverslade/wide"), _T("Home page"));
     info.AddDeveloper(_T("Alessandro Schillaci"));
     info.AddDeveloper(_T("Paolo Lucchesi"));
@@ -1874,20 +1875,11 @@ void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
     info.AddTranslator(_T("Eric Forgeot (French)"));
     info.AddTranslator(_T("Christof Menear (German)"));
     info.SetDescription(wxString::FromAscii(
-    "Wide is a win32 Editor for Inform6:\n"
-    "is an Integrated Development Environment (IDE), written entirely\n"
-    "in C++/WxWidgets, for the creation of text adventures based on \n"
-    "Graham Nelson's Inform6 Language. With Wide it's possible to edit,\n"
-    "compile and run a text adventure in the z-code and glulx formats.\n\n"
-    "- Written in C++ (using the wxWidgets Library)\n"
-    "- Wide runs on Win32 / Linux systems\n"
-    "- Wide is localized in spanish, english, italian, german and french\n"
-    "- Auto-completion window, in edit mode\n"
-    "- Wide is just an exe file: no DLL, no virtual machines: it's a stand alone application.\n"
-    "- Wrap lines, show number of lines, code folding\n"
-    "- Inform/Glulx support: wide supports zcode (5 and 8 version), ulx, blb, bres\n"
-    "- Objects tree and Syntax highlight is customizable\n"
-    "- Wide is portable: it can be started from an USB key/pen\n"));
+    " Wide is a win32 Editor for Inform6:\n"
+    " is an Integrated Development Environment (IDE), written entirely\n"
+    " in C++/WxWidgets, for the creation of text adventures based on \n"
+    " Graham Nelson's Inform6 Language. With Wide it's possible to edit,\n"
+    " compile and run a text adventure in the z-code and glulx formats.\n"));
     info.SetLicense(wxString::FromAscii(
 "\nGNU GPL LICENSE\n"
 "\n"

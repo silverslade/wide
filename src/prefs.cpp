@@ -60,15 +60,9 @@ const CommonInfo g_CommonPrefs = {
 //----------------------------------------------------------------------------
 // keywordlists
 // C++
-const wxChar* InformWordlist1 =
-    _T("");
-const wxChar* InformWordlist2 =
-    _T("");
-const wxChar* InformWordlist3 =
-    _T("");
-
-
-
+const wxChar* InformWordlist1 = _T("");
+const wxChar* InformWordlist2 = _T("");
+const wxChar* InformWordlist3 = _T("");
 
 //----------------------------------------------------------------------------
 //! languages
@@ -163,7 +157,7 @@ const StyleInfo g_StylePrefs [] = {
 
     // mySTC_TYPE_COMMENT_DOC
     {(wxChar*)_T("Comment (Doc)"),
-     (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("GREY"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_ITALIC, 0},
 
     // mySTC_TYPE_COMMENT_LINE
@@ -173,7 +167,7 @@ const StyleInfo g_StylePrefs [] = {
 
     // mySTC_TYPE_COMMENT_SPECIAL
     {(wxChar*)_T("Special comment"),
-     (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("GREY"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_ITALIC, 0},
 
 // testo normale
