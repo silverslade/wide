@@ -10,7 +10,7 @@
 #
 # 1) You should compile wxwidgets as static library and monolithic=0
 # cd /buiild
-# mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=0 BUILD=release UNICODE=1 
+# mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=1 BUILD=release UNICODE=1 
 #
 #
 # 2) then you can compile wide under windows using this makefile and MinGW
@@ -44,7 +44,7 @@ CONTRIB=-I$(WXHOME)/contrib/include
 TARGET := wide.exe
 DESTPATH = $(OUTPUTPATH)/$(TARGET)
 SOURCES := edit.cpp main.cpp prefs.cpp
-CPPFLAGS = -I$(WXHOME)/include $(SETUPH) $(CONTRIB) -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__ -DUNICODE=1
+CPPFLAGS = -I$(WXHOME)/include $(SETUPH) $(CONTRIB) -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__ -DUNICODE=1 -O2 -mthreads  -DHAVE_W32API_H -DNDEBUG  
 CXXFLAGS = -L$(WXHOME)/lib/gcc_lib 
 LDFLAGS = -lwxmsw30u -lwxscintilla -lwxregexu -lm -lgdi32 -lcomdlg32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lopengl32 -mwindows  -lwxtiff -lwxjpeg -lwxpng -lwxzlib  -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32 -static-libgcc -static-libstdc++
 
