@@ -2091,6 +2091,10 @@ wxMenuBar* MyFrame::CreateMenuBar()
     edit->Append(paste);    
     edit->AppendSeparator();
 
+    //wxMenuItem *undo = new wxMenuItem(edit, wxID_UNDO, _T("&")+MENU_EDIT_UNDO+_T("\tCtrl+Z"));
+	//undo->SetBitmap(wxArtProvider::GetBitmap(wxART_UNDO));
+	//edit->Append(undo);
+
     edit->Append(wxID_UNDO, _T("&")+MENU_EDIT_UNDO+_T("\tCtrl+Z"));
     edit->Append(wxID_REDO, _T("&")+MENU_EDIT_REDO+_T("\tCtrl+Y"));
     edit->AppendSeparator();
@@ -2295,39 +2299,39 @@ wxToolBar* MyFrame::CreateToolBarCtrl()
     tb2->SetToolBitmapSize(wxSize(16,16));
    
    
-    tb2->AddTool(ID_LoadFile, MENU_FILE_OPENFILE, fileopen_xpm);
-    tb2->AddTool(ID_NewFile, MENU_FILE_NEWFILE, new_xpm);    
-    tb2->AddTool(ID_Save_File, MENU_FILE_SAVEFILE, filesave_xpm );
-    tb2->AddTool(ID_Save_All, MENU_FILE_SAVEALL, filesaveall_xpm);
+    tb2->AddTool(ID_LoadFile, MENU_FILE_OPENFILE, fileopen_xpm, MENU_FILE_OPENFILE);
+    tb2->AddTool(ID_NewFile, MENU_FILE_NEWFILE, new_xpm, MENU_FILE_NEWFILE);    
+    tb2->AddTool(ID_Save_File, MENU_FILE_SAVEFILE, filesave_xpm, MENU_FILE_SAVEFILE);
+    tb2->AddTool(ID_Save_All, MENU_FILE_SAVEALL, filesaveall_xpm, MENU_FILE_SAVEALL);
     tb2->AddSeparator(); 
     
-    tb2->AddTool(ID_PreviousPage, MENU_FILE_PREVIOUSTAB, back_xpm);
-    tb2->AddTool(ID_NextPage, MENU_FILE_NEXTTAB, forward_xpm);
+    tb2->AddTool(ID_PreviousPage, MENU_FILE_PREVIOUSTAB, back_xpm, MENU_FILE_PREVIOUSTAB);
+    tb2->AddTool(ID_NextPage, MENU_FILE_NEXTTAB, forward_xpm, MENU_FILE_NEXTTAB);
     tb2->AddSeparator();
 
-    tb2->AddTool(wxID_UNDO, MENU_EDIT_UNDO, undo_xpm);
-    tb2->AddTool(wxID_REDO, MENU_EDIT_REDO, redo_xpm);
+    tb2->AddTool(wxID_UNDO, MENU_EDIT_UNDO, undo_xpm, MENU_EDIT_UNDO);
+    tb2->AddTool(wxID_REDO, MENU_EDIT_REDO, redo_xpm, MENU_EDIT_REDO);
     tb2->AddSeparator(); 
     
-    tb2->AddTool(wxID_COPY, MENU_EDIT_COPY, copy_xpm);
-    tb2->AddTool(wxID_CUT, MENU_EDIT_CUT, cut_xpm);
-    tb2->AddTool(wxID_PASTE, MENU_EDIT_PASTE, paste_xpm);
-    tb2->AddTool(ID_FindBack, MENU_SEARCH_FIND_BACKWARDS, findback_xpm);   //PL
-    tb2->AddTool(ID_Find, MENU_SEARCH_FIND, find_xpm);    //PL
-    tb2->AddTool(ID_FindObjectLocal, MENU_SEARCH_FIND_OBJECT, findobject_xpm);    //PL
-    tb2->AddTool(ID_FindObjectGlobal, MENU_SEARCH_FIND_OBJECT_IN_FILE,findobjectg_xpm);    //PL    
+    tb2->AddTool(wxID_COPY, MENU_EDIT_COPY, copy_xpm, MENU_EDIT_COPY);
+    tb2->AddTool(wxID_CUT, MENU_EDIT_CUT, cut_xpm, MENU_EDIT_CUT);
+    tb2->AddTool(wxID_PASTE, MENU_EDIT_PASTE, paste_xpm, MENU_EDIT_PASTE);
+    tb2->AddTool(ID_FindBack, MENU_SEARCH_FIND_BACKWARDS, findback_xpm, MENU_SEARCH_FIND_BACKWARDS);   //PL
+    tb2->AddTool(ID_Find, MENU_SEARCH_FIND, find_xpm, MENU_SEARCH_FIND);    //PL
+    tb2->AddTool(ID_FindObjectLocal, MENU_SEARCH_FIND_OBJECT, findobject_xpm, MENU_SEARCH_FIND_OBJECT);    //PL
+    tb2->AddTool(ID_FindObjectGlobal, MENU_SEARCH_FIND_OBJECT_IN_FILE,findobjectg_xpm, MENU_SEARCH_FIND_OBJECT_IN_FILE);    //PL    
     tb2->AddSeparator();
     
-    tb2->AddTool(ID_Compile, MESSAGES_COMPILEZCODE, compilezcode_xpm);
-    tb2->AddTool(ID_RunZcode, MESSAGES_RUNZCODE, exezcode_xpm);
+    tb2->AddTool(ID_Compile, MESSAGES_COMPILEZCODE, compilezcode_xpm, MESSAGES_COMPILEZCODE);
+    tb2->AddTool(ID_RunZcode, MESSAGES_RUNZCODE, exezcode_xpm, MESSAGES_RUNZCODE);
     tb2->AddSeparator();
     
-    tb2->AddTool(ID_CompileUlx, MESSAGES_COMPILEULX, compileulx_xpm);
-    tb2->AddTool(ID_RunUlx, MESSAGES_RUNGLULX, exeglulx_xpm);        
+    tb2->AddTool(ID_CompileUlx, MESSAGES_COMPILEULX, compileulx_xpm, MESSAGES_COMPILEULX);
+    tb2->AddTool(ID_RunUlx, MESSAGES_RUNGLULX, exeglulx_xpm, MESSAGES_RUNGLULX);        
     tb2->AddSeparator();
     
-    tb2->AddTool(ID_About, MENU_HELP_ABOUT, help_xpm );
-    tb2->AddTool(ID_Exit, MENU_FILE_QUIT, quit_xpm);
+    tb2->AddTool(ID_About, MENU_HELP_ABOUT, help_xpm, MENU_HELP_ABOUT );
+    tb2->AddTool(ID_Exit, MENU_FILE_QUIT, quit_xpm, MENU_FILE_QUIT);
     tb2->Realize();
     
     return tb2;
