@@ -32,19 +32,20 @@ h2. Install
 
 h3. Install on Linux:
 
-1) install runtime wxgtk3.0
+h4. 1) install runtime wxgtk3.0
+
 Archlinux example:
 <pre><code>sudo pacman -S wxgtk git
 sudo pacman -S extra/wxgtk
 sudo pacman -S gtk2hs-buildtools
 </code></pre>
 
-2) clone the wide repository 
+h4. 2) clone the wide repository 
 
 <pre><code>git clone https://github.com/silverslade/wide
 </code></pre>
 
-3) compile wide
+h4. 3) compile wide
 
 <pre><code>cd wide
 cd src
@@ -58,10 +59,12 @@ you shouldn't use "--as-needed" flag, use "--no-as-needed" instead
 
 h3. Install on Windows:
 
-1) download and install mingw from here http://sourceforge.net/projects/mingw/files/latest/download
-2) download wxwidgets 3.0.1 or above from https://www.wxwidgets.org/downloads/
-3) unzip wxwidgets 3.0 (under c:/wxWidgets-3.0.1)
-4) compile it
+h4. 1) Install mingw and wxwidgets 3.0.1
+
+* download and install mingw from here http://sourceforge.net/projects/mingw/files/latest/download
+* download wxwidgets 3.0.1 or above from https://www.wxwidgets.org/downloads/
+* unzip wxwidgets 3.0 (under c:/wxWidgets-3.0.1)
+* compile it
 
 <pre><code>cd c:/wxWidgets-3.0.1
 cd build
@@ -82,24 +85,32 @@ edit line 2217 of /mingw/include/commctrl.h and change
 instead of
 <code><pre>#define TV_DISPINFO __AW(NMTVDISPINFO)</code></pre>
 
-6) install GIT as command line from http://git-scm.com/download/win
+h4. 2) install GIT
+
+install GIT as command line from http://git-scm.com/download/win
 (or install github as client windows from https://windows.github.com/)
 
-7) clone the wide repository 
+h4. 3) clone the wide repository 
 
 <pre><code>git clone https://github.com/silverslade/wide
 </code></pre>
 
-8) edit the wide/makefile.gcc to fit your directories before compile it
+h4. 4) edit the wide/makefile.gcc
 
-9) then you can compile wide under windows using this makefile and MinGW
+edit the wide/makefile.gcc to fit your directories before compile it
+
+h4. 5) Compile Wide under Windows
+
+then you can compile wide under windows using this makefile and MinGW
 
 <pre><code>cd wide
 cd src
 mingw32-make -f makefile.gcc
 </code></pre>
 
-10) if you want to use a C++ IDE, you can install CodeLite (http://codelite.org/) and edit wide.project using your wxWidgets path and then open wide workspace with CodeLite.
+h4. 6) Install CodeLite (optional)
+
+if you want to use a C++ IDE, you can install CodeLite (http://codelite.org/) and edit wide.project using your wxWidgets path and then open wide workspace with CodeLite.
 
 Example:
 
