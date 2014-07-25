@@ -72,6 +72,16 @@ mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=1 BUILD=rel
 (in case of errors rename C:\MinGW\msys in C:\MinGW\OLDmsys and recompile for a msys uncompatibilty)
 after compiling wxwidgets, unrename C:\MinGW\OLDmsys to C:\MinGW\msys 
 
+In case of this error:
+<pre><code>../../src/msw/treectrl.cpp: In member function 'virtual bool wxTreeCtrl::MSWOnNotify(int, WXLPARAM, WXLPARAM*)':
+../../src/msw/treectrl.cpp:3280:17: error: 'NMTVDISPINFOWW' was not declared in this scope
+</code></pre>
+
+edit line 2217 of /mingw/include/commctrl.h and change
+<code><pre>#define TV_DISPINFO NMTVDISPINFO</code></pre>
+instead of
+<code><pre>#define TV_DISPINFO __AW(NMTVDISPINFO)</code></pre>
+
 6) install GIT as command line from http://git-scm.com/download/win
 (or install github as client windows from https://windows.github.com/)
 
