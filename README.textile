@@ -56,7 +56,7 @@ Note:
 * in case of errors uncomment line starting by "WX_LIBS" (see the makefile)
 you shouldn't use "--as-needed" flag, use "--no-as-needed" instead
 
-h4. Compiling wide under kdevelop (optional)
+h4. 4) compiling wide under kdevelop (optional)
 
 If you want to use kdevelop (with code completion) to compile wide, install it with
 
