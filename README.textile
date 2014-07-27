@@ -32,7 +32,7 @@ h2. Install
 
 h3. Install on Linux:
 
-h4. 1) install runtime wxgtk3.0
+h4. 1) install runtime wxgtk3.0 and git
 
 Archlinux example:
 <pre><code>sudo pacman -S wxgtk git
@@ -44,6 +44,8 @@ h4. 2) clone the wide repository
 
 <pre><code>git clone https://github.com/silverslade/wide
 </code></pre>
+
+You can use a git client (http://git-cola.github.io/)
 
 h4. 3) compile wide
 
