@@ -18,6 +18,7 @@
   #include "wx/regex.h"    
   #include "wx/fileconf.h" 
   #include "wx/generic/numdlgg.h" 
+//  #include "wx/filefn.h"
 
   #include "images/fileopen.xpm"
   #include "images/filesave.xpm"
@@ -62,7 +63,6 @@
  
    bool OnInit()
    {
-
    
      // Load config file
      pConfig = new wxFileConfig(
@@ -1409,9 +1409,14 @@ void MyFrame::OnConsoleClicked(wxStyledTextEvent &event) {
             console->SetSelectionEnd(0);
             console->Clear();
             
-            // Se il file non � aperto, lo apro        
+            // Se il file non e' aperto, lo apro        
             if (!checkOpenFile(file)){
-                wxString nome = file.Mid(file.Find('\\',true)+1,file.Length());
+		// Damned backslash
+		#ifdef __WINDOWS__     
+		  wxString nome = file.Mid(file.Find('\\',true)+1,file.Length());
+		#else     
+		  wxString nome = file.Mid(file.Find('/',true)+1,file.Length());
+		#endif  	                      
                 LoadFile(file, nome);            
             }
             
@@ -1824,7 +1829,14 @@ void MyFrame::OnOpenProject(wxCommandEvent& WXUNUSED(event)) {
         bCont = projfile->GetFirstEntry(str, dummy);
         while(bCont){
           s = projfile->Read(str,_T(""));
-          str = path.Mid(0,path.Find('\\',true)+1) + s;
+	  
+	  // Damned backslash
+	  #ifdef __WINDOWS__     
+	    str = path.Mid(0,path.Find('\\',true)+1) + s;
+	  #else     
+	    str = path.Mid(0,path.Find('/',true)+1) + s;
+	  #endif  	  
+
           LoadFile(str,s);
           if (mainFile == _T("")) {
                 mainFile = str;

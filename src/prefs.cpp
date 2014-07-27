@@ -126,13 +126,13 @@ const StyleInfo g_StylePrefs [] = {
 
     // mySTC_TYPE_WORD2
     {(wxChar*)_T("Keyword2"),
-     (wxChar*)_T("DARK BLUE"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_WORD3
     {(wxChar*)_T("Keyword3"),
-     (wxChar*)_T("CORNFLOWER BLUE"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_WORD4
     {(wxChar*)_T("Keyword4"),
@@ -141,7 +141,7 @@ const StyleInfo g_StylePrefs [] = {
 
     // mySTC_TYPE_WORD5
     {(wxChar*)_T("Keyword5"),
-     (wxChar*)_T("DARK GREY"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("GREY"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_WORD6
@@ -153,7 +153,7 @@ const StyleInfo g_StylePrefs [] = {
     // mySTC_TYPE_COMMENT
     {(wxChar*)_T("Comment"),
      (wxChar*)_T("GREY"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD|mySTC_STYLE_ITALIC, 0},
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_ITALIC, 0},
 
     // mySTC_TYPE_COMMENT_DOC
     {(wxChar*)_T("Comment (Doc)"),
@@ -163,7 +163,7 @@ const StyleInfo g_StylePrefs [] = {
     // mySTC_TYPE_COMMENT_LINE
     {(wxChar*)_T("Comment line"),
      (wxChar*)_T("GREY"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD|mySTC_STYLE_ITALIC, 0},
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_ITALIC, 0},
 
     // mySTC_TYPE_COMMENT_SPECIAL
     {(wxChar*)_T("Special comment"),
@@ -194,12 +194,12 @@ const StyleInfo g_StylePrefs [] = {
     // mySTC_TYPE_DELIMITER
     {(wxChar*)_T("Delimiter"),
      (wxChar*)_T("ORANGE"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_PUNCTUATION
     {(wxChar*)_T("Punctuation"),
      (wxChar*)_T("ORANGE"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_OPERATOR
     {(wxChar*)_T("Operator"),
@@ -208,49 +208,49 @@ const StyleInfo g_StylePrefs [] = {
 
     // mySTC_TYPE_BRACE
     {(wxChar*)_T("Label"),
-     (wxChar*)_T("VIOLET"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_COMMAND
     {(wxChar*)_T("Command"),
      (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_IDENTIFIER
     {(wxChar*)_T("Identifier"),
-     (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_LABEL
     {(wxChar*)_T("Label"),
      (wxChar*)_T("VIOLET"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
 // WORDLIST 1
     // mySTC_TYPE_NUMBER
     {(wxChar*)_T("Number"),
-     (wxChar*)_T("NAVY"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_PARAMETER
     {(wxChar*)_T("Parameter"),
-     (wxChar*)_T("VIOLET"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_ITALIC, 0},
 
     // mySTC_TYPE_REGEX
     {(wxChar*)_T("Regular expression"),
-     (wxChar*)_T("ORCHID"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
 // Stringhe
     // mySTC_TYPE_UUID
     {(wxChar*)_T("UUID"),
-     (wxChar*)_T("FOREST GREEN"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("GREEN"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_VALUE
     {(wxChar*)_T("Value"),
-     (wxChar*)_T("ORCHID"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_ITALIC, 0},
 
     // mySTC_TYPE_PREPROCESSOR
@@ -260,17 +260,17 @@ const StyleInfo g_StylePrefs [] = {
 
     // mySTC_TYPE_SCRIPT
     {(wxChar*)_T("Script"),
-     (wxChar*)_T("DARK GREY"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("GREY"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_ERROR
     {(wxChar*)_T("Error"),
-     (wxChar*)_T("RED"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("GREY"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_UNDEFINED
     {(wxChar*)_T("Undefined"),
-     (wxChar*)_T("ORANGE"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0}
 
     };
