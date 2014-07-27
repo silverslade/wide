@@ -4,9 +4,16 @@ CHANGELOG WIDE
 NF  = New Feature
 BFX = Bug Fix
 
+
+2014-07-27
+- [BFX] fix blc error under linux
+- [BFX] fix colour schema
+- [NF]  added tooltips over buttons
+- [NF]  provided a configurazion to use CodeLite to compile wide
+
 2014-07-22
 - WIDE VERSION 1.2.1
-- [NF] console scroll to end
+- [NF]  console scroll to end
 - [BFX] error on singledit
  
 2014-07-20
