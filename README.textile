@@ -137,3 +137,14 @@ and
 </code></pre>
 
 CodeLite will build wide using the Makefile.gcc and it will let you use the code completion
+
+In case of multiple installation of MinGW (i.e. MinGW and MinGW-4.8.1), you can force CodeLite to use a custom build system in this way:
+
+* Open CodeLite
+* settings -> environment variables
+* add this variable: PATH=C:\MinGW\bin;$(PATH)
+* where C:\MinGW is the correct path to use in compiling
+
+
+
+

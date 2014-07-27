@@ -245,7 +245,7 @@ const StyleInfo g_StylePrefs [] = {
 // Stringhe
     // mySTC_TYPE_UUID
     {(wxChar*)_T("UUID"),
-     (wxChar*)_T("GREEN"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("FOREST GREEN"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_VALUE
