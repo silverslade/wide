@@ -371,13 +371,13 @@ void Edit::OnMarginClick (wxStyledTextEvent &event) {
 
 bool Edit::HasWord(wxString word, wxString &wordlist)
 {
-	word.MakeLower();
+	word = word.MakeLower();
 
 	wxStringTokenizer tkz(wordlist.Lower(), _T(" "));
 	while (tkz.HasMoreTokens())
 	{	wxString token = tkz.GetNextToken();
 
-		if (token.Cmp(word)==0)
+		if (token.CmpNoCase(word)==0)
 			continue;
 		if (token.StartsWith(word))
 			return true;
@@ -390,6 +390,7 @@ void Edit::OnCharAdded (wxStyledTextEvent &event) {
     int chr = (char) event.GetKey();
     //printf("%d*",chr);
     bool found = false;
+	wxString zstr;
 //    à 65504 or -32
 //    è 65512 or -24
 //    ì 65516 or -20
@@ -397,78 +398,71 @@ void Edit::OnCharAdded (wxStyledTextEvent &event) {
 //    ù 65529 or -7
     
     if (hotkeys) {    
+		// Risistemato PL
         switch (chr) {
-            case 65504:
-                SetTargetStart(pos - 2);
-                SetTargetEnd(pos);
-                ReplaceTarget(_T(""));
-                AddText(_T("@`a"));
+            case 65451: case -85:
+                zstr=_T("@<<");
                 found = true;
                 break;
-            case -32:
-                SetTargetStart(pos - 2);
-                SetTargetEnd(pos);
-                ReplaceTarget(_T(""));
-                AddText(_T("@`a"));
+            case 65467: case -69:
+                zstr=_T("@>>");
+                found = true;
+                break;				
+            case 65472: case -64:
+                zstr=_T("@`A");
+                found = true;
+                break;
+            case 65480: case -56:
+                zstr=_T("@`E");
+                found = true;
+                break;          
+            case 65481: case -55:
+                zstr=_T("@'E");
+                found = true;
+                break;         
+            case 65484: case -52:
+                zstr=_T("@`I");
                 found = true;
                 break;                
-            case 65512:
-                SetTargetStart(pos - 2);
-                SetTargetEnd(pos);
-                ReplaceTarget(_T(""));
-                AddText(_T("@`e"));
+            case 65490: case -46:
+                zstr=_T("@`O");
                 found = true;
                 break;                
-            case -24:
-                SetTargetStart(pos - 2);
-                SetTargetEnd(pos);
-                ReplaceTarget(_T(""));
-                AddText(_T("@`e"));
+            case 65497: case -39:
+                zstr=_T("@`U");
+                found = true;
+                break; 
+            case 65504: case -32:
+                zstr=_T("@`a");
+                found = true;
+                break;
+            case 65512: case -24:
+                zstr=_T("@`e");
+                found = true;
+                break;          
+            case 65513: case -23:
+                zstr=_T("@'e");
+                found = true;
+                break;         
+            case 65516: case -20:
+                zstr=_T("@`i");
                 found = true;
                 break;                
-            case 65516:
-                SetTargetStart(pos - 2);
-                SetTargetEnd(pos);
-                ReplaceTarget(_T(""));
-                AddText(_T("@`i"));
+            case 65522: case -14:
+                zstr=_T("@`o");
                 found = true;
                 break;                
-            case -20:
-                SetTargetStart(pos - 2);
-                SetTargetEnd(pos);
-                ReplaceTarget(_T(""));
-                AddText(_T("@`i"));
-                found = true;
-                break;                
-            case 65522:
-                SetTargetStart(pos - 2);
-                SetTargetEnd(pos);
-                ReplaceTarget(_T(""));
-                AddText(_T("@`o"));
-                found = true;
-                break;                
-            case -14:
-                SetTargetStart(pos - 2);
-                SetTargetEnd(pos);
-                ReplaceTarget(_T(""));
-                AddText(_T("@`o"));
-                found = true;
-                break;              
-            case 65529:
-                SetTargetStart(pos - 2);
-                SetTargetEnd(pos);
-                ReplaceTarget(_T(""));
-                AddText(_T("@`u"));
-                found = true;
-                break;                
-            case -7:
-                SetTargetStart(pos - 2);
-                SetTargetEnd(pos);
-                ReplaceTarget(_T(""));
-                AddText(_T("@`u"));
+            case 65529: case -7:
+                zstr=_T("@`u");
                 found = true;
                 break;                
         }
+		if (found) {
+			SetTargetStart(pos - 2);
+            SetTargetEnd(pos);
+            ReplaceTarget(_T(""));
+			AddText(zstr);
+		}
     }
     // if (chr < 0) { wxString s; s.Printf("%d",chr); AddText(s); }        
 //    if (hotkeys) {          

@@ -1627,7 +1627,7 @@ void MyFrame::setNewStc(Edit* stc) {
         while(bCont){
             s = pConfig->Read(str,_T(""));
             statlist = statlist + s + _T(" ");
-            wlarray.Add(s);
+            wlarray.Add(s.MakeLower());
             bCont = pConfig->GetNextEntry(str, dummy);
         }
     }
@@ -1638,7 +1638,7 @@ void MyFrame::setNewStc(Edit* stc) {
         while(bCont){
             s = pConfig->Read(str,_T(""));
             direclist = direclist + s + _T(" ");
-            wlarray.Add(s);
+            wlarray.Add(s.MakeLower());
             bCont = pConfig->GetNextEntry(str, dummy);
         }
     }
@@ -1649,7 +1649,7 @@ void MyFrame::setNewStc(Edit* stc) {
         while(bCont){
             s = pConfig->Read(str,_T(""));
             otherlist = otherlist + s + _T(" ");
-            wlarray.Add(s);
+            wlarray.Add(s.MakeLower());
             bCont = pConfig->GetNextEntry(str, dummy);
         }    
     }
@@ -1660,7 +1660,7 @@ void MyFrame::setNewStc(Edit* stc) {
         while(bCont){
             s = pConfig->Read(str,_T(""));
             informatelist = informatelist + s + _T(" ");
-            wlarray.Add(s);
+            wlarray.Add(s.MakeLower());
             bCont = pConfig->GetNextEntry(str, dummy);
         }    
     }
@@ -1671,7 +1671,7 @@ void MyFrame::setNewStc(Edit* stc) {
         while(bCont){
             s = pConfig->Read(str,_T(""));
             custom1list = custom1list + s + _T(" ");
-            wlarray.Add(s);
+            wlarray.Add(s.MakeLower());
             bCont = pConfig->GetNextEntry(str, dummy);
         }    
     }
@@ -1681,7 +1681,7 @@ void MyFrame::setNewStc(Edit* stc) {
         while(bCont){
             s = pConfig->Read(str,_T(""));
             custom2list = custom2list + s + _T(" ");
-            wlarray.Add(s);
+            wlarray.Add(s.MakeLower());
             bCont = pConfig->GetNextEntry(str, dummy);
         }    
     }
@@ -1691,7 +1691,7 @@ void MyFrame::setNewStc(Edit* stc) {
         while(bCont){
             s = pConfig->Read(str,_T(""));
             custom3list = custom3list + s + _T(" ");
-            wlarray.Add(s);
+            wlarray.Add(s.MakeLower());
             bCont = pConfig->GetNextEntry(str, dummy);
         }    
     }
