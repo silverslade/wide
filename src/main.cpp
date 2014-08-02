@@ -59,6 +59,16 @@
  //  #define wxDEBUG_LEVEL 0
  //#endif
  
+#if wxCHECK_VERSION(3, 0, 0)
+    // compilation ok
+#else 
+    #error "Sorry, you must compile wide with wxWidgets 3.0.0 or above. Abort compile process."
+#endif
+ 
+ 
+ 
+ 
+ 
   // our normal wxApp-derived class, as usual
  class MyApp : public wxApp {
  public:
