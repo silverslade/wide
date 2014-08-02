@@ -148,6 +148,7 @@ class MyFrame : public wxFrame {
  
  public:
     void RefreshTree();
+    void OnOutput(wxString string);
 
  // Funzioni
  private:
@@ -226,7 +227,7 @@ class MyFrame : public wxFrame {
     
     // Metodi della console
     void OnConsoleClicked(wxStyledTextEvent &event);
-    void OnOutput(wxString string);
+
     void OnClear();
 
     // HELP MENU

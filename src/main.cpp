@@ -19,6 +19,7 @@
   #include "wx/fileconf.h" 
   #include "wx/generic/numdlgg.h" 
 //  #include "wx/filefn.h"
+  #include "wx/stdpaths.h"
 
   #include "images/fileopen.xpm"
   #include "images/filesave.xpm"
@@ -50,6 +51,7 @@
   #include "myframe.h"
 
   wxFileConfig *pConfig;    
+  wxString inipath;
 
  // #define wxDEBUG_LEVEL 0  
  //#define NDEBUG
@@ -64,26 +66,50 @@
    bool OnInit()
    {
    
-     // Load config file
-     pConfig = new wxFileConfig(
-        _T(NOMEAPPLICAZIONE),
-        _T(NOMEAPPLICAZIONE),
-        _T(CONFIG_FILE),
-        _T(""),
-        wxCONFIG_USE_RELATIVE_PATH,
-        wxConvISO8859_1);
+     // 1) try to load wide.ini config file within the same wide wxSetWorkingDirectory
+     // 2) if wide.ini exists -> will be loaded
+     // 3) is not exists, try to load USERDIR/wide.ini file
+     // 4) if not exists neither USERDIR/wide.ini and wide.ini file, the config file will be saved to USERDIR path
+     
+     if (!wxFile::Exists(_T(CONFIG_FILE)))
+     {
+	inipath = wxStandardPaths::Get().GetUserLocalDataDir() + wxFileName::GetPathSeparator() + _T(CONFIG_FILE);
+
+	wxFileName userdir = wxFileName::DirName( wxStandardPaths::Get().GetUserLocalDataDir());
+	if (!wxDirExists(wxStandardPaths::Get().GetUserLocalDataDir())){
+	  userdir.Mkdir(0777);
+	  wxMessageBox ("Warning, no local/userdir wide.ini file found: a new file will be created in the user dir", "Wide configuration file PATH",  wxOK | wxICON_ERROR);
+	}
+	 
+     }
+     else{
+         inipath = _T(CONFIG_FILE);
+     }
+
+      // Load config file
+      pConfig = new wxFileConfig(
+      _T(NOMEAPPLICAZIONE),
+      _T(NOMEAPPLICAZIONE),
+      inipath,
+      _T(""),
+      wxCONFIG_USE_RELATIVE_PATH,
+      wxConvISO8859_1);       
+     
+     
      wxConfigBase::Set(pConfig);     
      pConfig->SetPath(_T("/"));
         
      // Window position and dimension
-     int width = pConfig->Read(_T("WINDOW_WIDTH"), 1l);
-     int height = pConfig->Read(_T("WINDOW_HEIGHT"), 1l);;
-     wxPoint point = wxPoint(pConfig->Read(_T("WINDOW_LOCATION_X"), 1l),
-                    pConfig->Read(_T("WINDOW_LOCATION_Y"), 1l));
+     int width = pConfig->Read(_T("WINDOW_WIDTH"), 800l);
+     int height = pConfig->Read(_T("WINDOW_HEIGHT"), 600l);;
+     wxPoint point = wxPoint(pConfig->Read(_T("WINDOW_LOCATION_X"), 1l), pConfig->Read(_T("WINDOW_LOCATION_Y"), 1l));
         
-     wxFrame* frame = new MyFrame(NULL,point,width,height);
+     MyFrame* frame = new MyFrame(NULL,point,width,height);
      SetTopWindow(frame);
      frame->Show();
+     
+     
+     (frame)->OnOutput(_T("Wide Configuration file saved with path ") +inipath);
      
      return true;                    
    }

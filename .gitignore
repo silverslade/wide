@@ -7,3 +7,10 @@ src/.codelite/wide.workspace.user
 src/.codelite/sftp-workspace-settings.conf
 src/.codelite/wide.session
 src/.codelite/wide.workspace.neo
+/src/.kdev4/src.kdev4
+/src/edit.o
+/src/main.o
+/src/prefs.o
+/src/src.kdev4
+/src/wide
+/src/.kdev_include_paths
