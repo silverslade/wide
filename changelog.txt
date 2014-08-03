@@ -5,7 +5,7 @@ NF  = New Feature
 BFX = Bug Fix
 
 
-2014-07-27
+2014-08-03
 - WIDE VERSION 1.2.2
 - [BFX] fix blc error under linux
 - [BFX] fix colour schema
