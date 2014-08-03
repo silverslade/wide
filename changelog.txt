@@ -6,10 +6,12 @@ BFX = Bug Fix
 
 
 2014-07-27
+- WIDE VERSION 1.2.2
 - [BFX] fix blc error under linux
 - [BFX] fix colour schema
 - [NF]  added tooltips over buttons
 - [NF]  provided a configurazion to use CodeLite to compile wide
+- [NF] wide.ini file saved locally and in the user dir
 
 2014-07-22
 - WIDE VERSION 1.2.1
