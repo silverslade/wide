@@ -39,6 +39,7 @@ If you're a ArchLinux user, wide is on the AUR repository. Simply use this comma
 <pre><code>yaourt -S wide
 </code></pre>
 
+h4. Other Linux distros
 
 h4. 1) install runtime wxgtk3.0 and git
 
