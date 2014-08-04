@@ -32,6 +32,14 @@ h2. Install
 
 h3. Install on Linux:
 
+h4. Archlinux
+
+If you're a ArchLinux user, wide is on the AUR repository. Simply use this command:
+
+<code><pre>yaourt -S wide
+</code></pre>
+
+
 h4. 1) install runtime wxgtk3.0 and git
 
 Archlinux example:
