@@ -16,12 +16,14 @@ h2. Main Features:
 * Wide is portable: it can be started from an USB key/pen
 
 h2. Authors:
+
 * Alessandro Schillaci
 * Paolo Lucchesi
 
 h2. License:
 
-Wide is an open source project (GNU GPL License).
+Wide is an open source project (GNU GPL License). This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 h2. Thanks to:
 
@@ -156,6 +158,13 @@ In case of multiple installation of MinGW (i.e. MinGW and MinGW-4.8.1), you can 
 * add this variable: PATH=C:\MinGW\bin;$(PATH)
 * where C:\MinGW is the correct path to use in compiling
 
+h2. Do you want to Help?
 
+We need help for:
+
+* documentation
+* manual
+* test and documentation about installing WIDE on Linux/MacOsX Platforms
+* C++ programming
 
 
