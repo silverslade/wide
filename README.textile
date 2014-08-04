@@ -36,7 +36,7 @@ h4. Archlinux
 
 If you're a ArchLinux user, wide is on the AUR repository. Simply use this command:
 
-<code><pre>yaourt -S wide
+<pre><code>yaourt -S wide
 </code></pre>
 
 
