@@ -51,6 +51,18 @@ sudo pacman -S extra/wxgtk
 sudo pacman -S gtk2hs-buildtools
 </code></pre>
 
+Debian/Ubuntu/Mint example:
+Install the following packages with Software Manager, Synaptic or from terminal with the 'sudo apt-get install <package>' command:
+<pre><code>
+- git
+- libwxbase3.0-0
+- libwxbase-dev
+- libwxgtk3.0-0
+- libwxgtk3.0-dev
+- wx-common
+- wx3.0-headers
+</code></pre>
+
 h4. 2) clone the wide repository 
 
 <pre><code>git clone https://github.com/silverslade/wide
