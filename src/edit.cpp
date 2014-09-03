@@ -301,8 +301,8 @@ void Edit::OnWrapmodeOn (wxCommandEvent &WXUNUSED(event)) {
     SetWrapMode (GetWrapMode() == 0? wxSTC_WRAP_WORD: wxSTC_WRAP_NONE);
 }
 
-void Edit::ClearHotkeys() { m_hotkey.Clear(); }
-void Edit::AddHotkey(wxString s) { 
+void Edit::ClearHotkeys() { m_hotkey.Clear(); }  // PL: Questa roba secondo me non serve più
+void Edit::AddHotkey(wxString s) {   // PL: Idem con patate
     wxString s2;
     if ( s[1]==',' ) s2 = s;
     if ( s[2]==',' ) {
@@ -385,78 +385,44 @@ bool Edit::HasWord(wxString word, wxString &wordlist)
 	return false;
 }
 
+struct Hkeys {
+	const int chr;
+	const char *str;
+};
+
 void Edit::OnCharAdded (wxStyledTextEvent &event) {
     int pos = GetCurrentPos();
     int chr = (char) event.GetKey();
     //printf("%d*",chr);
     bool found = false;
+    int i;
 	wxString zstr;
-//    à 65504 or -32
-//    è 65512 or -24
-//    ì 65516 or -20
-//    ò 65522 or -14
-//    ù 65529 or -7
+	//Hkeys hotkeylist[] = { {-85, "Pippo"}, {-69, "Pluto"} };
+
+    Hkeys hotkeylist[] = {
+		{-85, "@<<"}, {-69, "@>>"}, {-64, "@`A"}, {-56, "@`E"}, {-55, "@'E"}, {-52, "@`I"}, {-46, "@`O"}, {-39, "@`U"},	
+		{-32, "@`a"}, {-24, "@`e"}, {-23, "@'e"}, {-20, "@`i"}, {-14, "@`o"}, {-7, "@`u"},
+		{0," "}
+    };
     
     if (hotkeys) {    
-		// Risistemato PL
+		for (i=0;hotkeylist[i].chr;i++)  {
+			if ((chr == hotkeylist[i].chr) || (chr == (65536 + hotkeylist[i].chr))) {
+				zstr = wxString::FromUTF8(hotkeylist[i].str);
+				found = true;
+				break;
+			}
+		}
+
+/*		PL: Esempio di come era fatto prima
         switch (chr) {
             case 65451: case -85:
                 zstr=_T("@<<");
                 found = true;
                 break;
-            case 65467: case -69:
-                zstr=_T("@>>");
-                found = true;
-                break;				
-            case 65472: case -64:
-                zstr=_T("@`A");
-                found = true;
-                break;
-            case 65480: case -56:
-                zstr=_T("@`E");
-                found = true;
-                break;          
-            case 65481: case -55:
-                zstr=_T("@'E");
-                found = true;
-                break;         
-            case 65484: case -52:
-                zstr=_T("@`I");
-                found = true;
-                break;                
-            case 65490: case -46:
-                zstr=_T("@`O");
-                found = true;
-                break;                
-            case 65497: case -39:
-                zstr=_T("@`U");
-                found = true;
-                break; 
-            case 65504: case -32:
-                zstr=_T("@`a");
-                found = true;
-                break;
-            case 65512: case -24:
-                zstr=_T("@`e");
-                found = true;
-                break;          
-            case 65513: case -23:
-                zstr=_T("@'e");
-                found = true;
-                break;         
-            case 65516: case -20:
-                zstr=_T("@`i");
-                found = true;
-                break;                
-            case 65522: case -14:
-                zstr=_T("@`o");
-                found = true;
-                break;                
-            case 65529: case -7:
-                zstr=_T("@`u");
-                found = true;
-                break;                
+			[...]
         }
+*/
 		if (found) {
 			SetTargetStart(pos - 2);
             SetTargetEnd(pos);
