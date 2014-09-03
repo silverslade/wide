@@ -16,8 +16,10 @@ WX_LIBS =  -pthread -Wl,-O1,--sort-common,-z,relro -lwx_gtk2u_richtext-3.0 -lwx_
 CXXFLAGS = $(WX_FLAGS) 
 LIBS     = $(WX_LIBS)
 
-
 all: wide
+
+install: wide
+	sudo cp wide /usr/bin
 
 clean:
 	rm -f edit.o main.o prefs.o wide
@@ -32,5 +34,5 @@ prefs.o: defsext.h prefs.cpp prefs.h
 	$(CXX) $(CXXFLAGS) -c prefs.cpp
 
 wide: edit.o main.o prefs.o
-	$(CXX) $(LIBS) -o wide edit.o main.o prefs.o
+	$(CXX) -o wide edit.o main.o prefs.o $(LIBS)
 	$(STRIP) -s wide
