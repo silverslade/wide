@@ -6,7 +6,7 @@
 
   // CONSTANTS
   #define SEP " - "
-  #define VERSIONE "1.2.2"
+  #define VERSIONE "1.2.3 beta"
   #define BUILD " (build 20140803001) "
   #define NOMEAPPLICAZIONE "WIDE"  
   #define DESCRIZIONE "Wx Inform Development Environment"    
