@@ -977,13 +977,11 @@ void MyFrame::OnCreateBlb (wxCommandEvent &event) {
         blbFile = mainFile;
     }
     
-#ifdef __WINDOWS__     
+//ifdef __WINDOWS__    PL: Questa parte era solo per windows. Ora funziona anche sotto linux 
     wxString wpath=wxPathOnly(blbFile);
     wxString mpath = wxGetCwd();
     wxSetWorkingDirectory(wpath);
-#endif      
-    
-
+//endif      
 
     blcFile.Replace(_T(".inf"), _T(".blc"), true);
     blbFile.Replace(_T(".inf"), _T(".")+bext, true);
@@ -1018,9 +1016,9 @@ void MyFrame::OnCreateBlb (wxCommandEvent &event) {
         OnOutput(_T("Ok.\n"));
         inform_error = false;
     }    
-#ifdef __WINDOWS__     
+//ifdef __WINDOWS__     PL: Vedi sopra
     wxSetWorkingDirectory(mpath);    
-#endif  
+//endif  
     
 }
 
@@ -1359,6 +1357,7 @@ void MyFrame::OnCompile (wxCommandEvent &event) {
         nome = mainFile;
         zcode = mainFile;        
     }
+
     zcode.Replace(_T(".inf"), zcodeversion, true);
     //wxString comando =  informCompiler+_T(" ")+zcodeswitch+_T(" ")+libraryPath+_T(" \"")+nome+_T("\" ")+_T(" \"")+zcode+_T("\" ");
     wxString comando =  informCompiler+_T(" ")+zcodeswitch+_T(" ")+libraryPath+_T(" \"")+nome+_T("\" ")+_T(" \"")+zcode+_T("\"");

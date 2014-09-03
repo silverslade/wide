@@ -227,9 +227,9 @@ const StyleInfo g_StylePrefs [] = {
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
 // WORDLIST 1
-    // mySTC_TYPE_NUMBER
+    // mySTC_TYPE_NUMBER // E questi invece sono gli indicatori
     {(wxChar*)_T("Number"),
-     (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("NAVY"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_PARAMETER
@@ -243,10 +243,10 @@ const StyleInfo g_StylePrefs [] = {
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
 // Stringhe
-    // mySTC_TYPE_UUID
+    // mySTC_TYPE_UUID // PL: Non capisco perchè lo stile delle stringhe è definito qui
     {(wxChar*)_T("UUID"),
-     (wxChar*)_T("FOREST GREEN"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
+     (wxChar*)_T("BROWN"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_VALUE
     {(wxChar*)_T("Value"),
