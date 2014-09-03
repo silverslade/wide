@@ -4,6 +4,12 @@ CHANGELOG WIDE
 NF  = New Feature
 BFX = Bug Fix
 
+2014-09-03 
+- makefile fix
+- hotkeys management
+- colour fix
+- gblorb file creation
+
 
 2014-08-03
 - WIDE VERSION 1.2.2
