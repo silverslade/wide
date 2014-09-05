@@ -385,10 +385,12 @@ bool Edit::HasWord(wxString word, wxString &wordlist)
 	return false;
 }
 
-struct Hkeys {
+/* struct Hkeys {
 	const int chr;
 	const char *str;
-};
+}; */
+
+// Evidentemente non sono mai contento di questa routine
 
 void Edit::OnCharAdded (wxStyledTextEvent &event) {
     int pos = GetCurrentPos();
@@ -398,14 +400,32 @@ void Edit::OnCharAdded (wxStyledTextEvent &event) {
     int i;
 	wxString zstr;
 	//Hkeys hotkeylist[] = { {-85, "Pippo"}, {-69, "Pluto"} };
+	
+	const char *hklist[] = {
+		"-", "@!!", "-", "@LL", "-", "-", "-", "-", "-", "-", "-", "@<<", "-", "-", "-", "-",
+		"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "@>>", "@OE", "@oe", "-", "@??",
+		"@`A", "@'A", "@^A", "@~A", "@:A", "@oA", "@AE", "@,C", "@`E", "@'E", "@^E", "@:E", "@`I", "@'I", "@^I", "@:I",
+		"@ET", "@~N", "@`O", "@'O", "@^O", "@~O", "@:O", "-", "@\\O", "@`U", "@'U", "@^U", "@:U", "@'Y", "@Th", "@ss",
+		"@`a", "@'a", "@^a", "@~a", "@:a", "@oa", "@ae", "@,c", "@`e", "@'e", "@^e", "@:e", "@`i", "@'i", "@^i", "@:i",
+		"@et", "@~n", "@`o", "@'o", "@^o", "@~o", "@:o", "-", "@\\o", "@`u", "@'u", "@^u", "@:u", "@'y", "@th", "@:y"
+	};
 
-    Hkeys hotkeylist[] = {
+/*    Hkeys hotkeylist[] = {
 		{-85, "@<<"}, {-69, "@>>"}, {-64, "@`A"}, {-56, "@`E"}, {-55, "@'E"}, {-52, "@`I"}, {-46, "@`O"}, {-39, "@`U"},	
 		{-32, "@`a"}, {-24, "@`e"}, {-23, "@'e"}, {-20, "@`i"}, {-14, "@`o"}, {-7, "@`u"},
 		{0," "}
-    };
+    }; */
     
     if (hotkeys) {    
+		i = -1;
+		if (chr < 0 && chr >= -96) i = 96+chr;   // 256+chr-160;
+		if (chr >= 65440 && chr < 65536) i = chr-65440;
+		if (*hklist[i] != '@') i = -1;
+		if (i>=0 && i<96) {
+			zstr = wxString::FromUTF8(hklist[i]);
+			found = true;
+		}
+		/*
 		for (i=0;hotkeylist[i].chr;i++)  {
 			if ((chr == hotkeylist[i].chr) || (chr == (65536 + hotkeylist[i].chr))) {
 				zstr = wxString::FromUTF8(hotkeylist[i].str);
@@ -413,6 +433,7 @@ void Edit::OnCharAdded (wxStyledTextEvent &event) {
 				break;
 			}
 		}
+		*/
 
 /*		PL: Esempio di come era fatto prima
         switch (chr) {
