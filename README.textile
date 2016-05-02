@@ -170,6 +170,37 @@ In case of multiple installation of MinGW (i.e. MinGW and MinGW-4.8.1), you can 
 * add this variable: PATH=C:\MinGW\bin;$(PATH)
 * where C:\MinGW is the correct path to use in compiling
 
+h2. Using wide project files
+
+You can organize your sources in projects using the wide-projects format file.
+
+* create a wpf file (example: myproject.wpf)
+* add this lines and customized for your needs
+
+<pre>
+# Example project for Wide / Inform Pack
+
+ZCODEVERSION=5
+
+[FILES]
+F00=example.inf
+F01=example_game.inf
+F02=example_menu.inf
+
+[CLASSES]
+C00=Room
+C01=Prop
+C02=MyDoor
+C03=NPC
+
+[KEYWORDS]
+K00=attitude
+K01=turnsinside
+</pre>
+
+* open project in wide main window
+
+
 h2. Do you want to Help?
 
 We need help for:
