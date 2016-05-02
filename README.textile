@@ -180,19 +180,24 @@ You can organize your sources in projects using the wide-projects format file.
 <pre>
 # Example project for Wide / Inform Pack
 
+# values:5 or 8
+# set zcode version of your project
 ZCODEVERSION=5
 
+# add here sources of your project
 [FILES]
 F00=example.inf
 F01=example_game.inf
 F02=example_menu.inf
 
+# add here your custom class: will be visible inside the object's tree
 [CLASSES]
 C00=Room
 C01=Prop
 C02=MyDoor
 C03=NPC
 
+# add here your custom keywords
 [KEYWORDS]
 K00=attitude
 K01=turnsinside
