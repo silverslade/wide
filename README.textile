@@ -205,6 +205,11 @@ K01=turnsinside
 
 * open project in wide main window
 
+h2. Tips
+
+* use these files to compile blc and bres tool (under linux)
+
+http://www.caad.es/baltasarq/download/
 
 h2. Do you want to Help?
 
