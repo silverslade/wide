@@ -92,18 +92,20 @@ Start Kdevelop and open wide/Makefile as project
 
 h3. Install on Windows:
 
-h4. 1) Install mingw and wxwidgets 3.0.1
+h4. 1) Install mingw and wxwidgets 3.1.0
 
 * download and install mingw from here http://sourceforge.net/projects/mingw/files/latest/download
 * download wxwidgets 3.0.1 or above from https://www.wxwidgets.org/downloads/
-* unzip wxwidgets 3.0 (under c:/wxWidgets-3.0.1)
+* unzip wxwidgets 3.1.0 (under c:/wxWidgets-3.1.0)
 * compile it
 
-<pre><code>cd c:/wxWidgets-3.0.1
+<pre><code>cd c:/wxWidgets-3.1.0
 cd build
 cd msw
-mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=1 BUILD=release UNICODE=1 
-</code></pre>
+mingw32-make -f makefile.gcc setup_h  (or "mingw32-make SHELL=CMD.exe -f makefile.gcc setup_h")
+mingw32-make SHELL=CMD.exe -f Makefile.gcc SHARED=0 UNICODE=1 BUILD=release VENDOR=cl CXXFLAGS="-fno-keep-inline-dllexport -std=c++11" MONOLITHIC=1</code></pre>
+
+For wxwidgets errors see here: https://wiki.wxwidgets.org/Compiling_wxWidgets_with_MinGW
 	
 (in case of errors rename C:\MinGW\msys in C:\MinGW\OLDmsys and recompile for a msys uncompatibilty)
 after compiling wxwidgets, unrename C:\MinGW\OLDmsys to C:\MinGW\msys 
