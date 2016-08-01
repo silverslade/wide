@@ -151,16 +151,16 @@ Example:
 
 <pre><code><Compiler Options="--fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__ -DUNICODE=1" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
         <IncludePath Value="."/>
-        <IncludePath Value="C:/wxWidgets-3.0.1/contrib/include"/>
-        <IncludePath Value="C:/wxWidgets-3.0.1/include"/>
-        <IncludePath Value="C:/wxWidgets-3.0.1/lib/gcc_lib/mswu"/>
-        <IncludePath Value="C:/wxWidgets-3.0.1/"/>
+        <IncludePath Value="C:/wxWidgets-3.1.0/contrib/include"/>
+        <IncludePath Value="C:/wxWidgets-3.1.0/include"/>
+        <IncludePath Value="C:/wxWidgets-3.1.0/lib/gcc_lib/mswu"/>
+        <IncludePath Value="C:/wxWidgets-3.1.0/"/>
       </Compiler>
 </code></pre>
 
 and
 
-<pre><code><SearchPaths>C:\wxWidgets-3.0.1\include\</SearchPaths>
+<pre><code><SearchPaths>C:\wxWidgets-3.1.0\include\</SearchPaths>
 </code></pre>
 
 CodeLite will build wide using the Makefile.gcc and it will let you use the code completion
