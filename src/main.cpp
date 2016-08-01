@@ -986,7 +986,8 @@ void MyFrame::OnCreateBlb (wxCommandEvent &event) {
     blcFile.Replace(_T(".inf"), _T(".blc"), true);
     blbFile.Replace(_T(".inf"), _T(".")+bext, true);
     //wxString comando =  _T("\"")+blc +_T("\"")+_T(" ")+_T("\"")+blcFile+_T("\"")+_T(" ")+_T("\"")+blbFile+_T("\"");
-    wxString comando =  blc +_T(" ")+blcFile+_T(" ")+blbFile;
+    // FIX AS - blcfile path with spaces (20160801)
+	wxString comando =  blc +_T(" ")+_T("\"")+blcFile+_T("\"")+_T(" ")+blbFile;
 
     //wxString comando =  blc +" "+blcFile+" "+blbFile;    
     wxArrayString output;

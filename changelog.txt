@@ -2,7 +2,12 @@ CHANGELOG WIDE
 ==============
 
 NF  = New Feature
-BFX = Bug Fix
+FIX = Bug Fix
+
+2016-08-01
+- update makefile to wxwidgets 3.1.0 version
+- [FIX] error in function "createblb" with spaces in path
+
 
 2014-09-03 
 - makefile fix
@@ -10,11 +15,10 @@ BFX = Bug Fix
 - colour fix
 - gblorb file creation
 
-
 2014-08-03
 - WIDE VERSION 1.2.2
-- [BFX] fix blc error under linux
-- [BFX] fix colour schema
+- [FIX] fix blc error under linux
+- [FIX] fix colour schema
 - [NF]  added tooltips over buttons
 - [NF]  provided a configurazion to use CodeLite to compile wide
 - [NF] wide.ini file saved locally and in the user dir
@@ -22,7 +26,7 @@ BFX = Bug Fix
 2014-07-22
 - WIDE VERSION 1.2.1
 - [NF]  console scroll to end
-- [BFX] error on singledit
+- [FIX] error on singledit
  
 2014-07-20
 - WIDE VERSION 1.2.0

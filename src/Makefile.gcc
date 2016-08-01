@@ -1,33 +1,50 @@
-# ########################################################################
+# # ###############################################################################################
 #
 # MAKEFILE FOR WIDE
 #
-# This file is for MinGW GCC compiler under Windows
+# This Makefile is for MinGW GCC compiler under Windows.
 #
-# NEEDED: wxwidgets 3.0
+# Required: wxwidgets 3.1.0 Library, GCC 5.1.0
 #
-# Note:
+# Preparation:
+# 1) download and install TDM 5.1.0 - http://tdm-gcc.tdragon.net/download 
+# 1) download and install wxwidgets 3.1.0+
+# 2) unzip it
+# 3) cd <WXWIDGETS_HOME>/build/mswu
+# 4) execute "mingw32-make SHELL=CMD.exe -f makefile.gcc setup_h"
+# 5) compile it in monolithic mode: 
+#    "mingw32-make SHELL=CMD.exe -f Makefile.gcc SHARED=0 UNICODE=1 BUILD=release VENDOR=cl CXXFLAGS="-fno-keep-inline-dllexport -std=c++11" MONOLITHIC=1
+# 6) compile wide
+#    "cd wide"
+#    "cd src"
+#    "mingw32-make -f makefile.gcc"
 #
-# 1) You should compile wxwidgets as static library and monolithic=0
-# cd /buiild
-# mingw32-make -f makefile.gcc SHARED=0 RUNTIME_LIBS=static MONOLITHIC=1 BUILD=release UNICODE=1 
+# Wxwidgets notes:
+# ================
+# in case of error "The input line is too long", modify the wxwidgets Makefile.gcc: 
+# Replace "$(MONOLIB_OBJECTS)" with "ar rcu $@ gcc_mswu\\monolib*.o" in the section
 #
+#   ifeq ($(MONOLITHIC),1)
+#   ifeq ($(SHARED),0)
+#   $(LIBDIRNAME)\libwx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR).a: $(MONOLIB_OBJECTS)
+#   	if exist $@ del $@
+#   	ar rcu $@ $(MONOLIB_OBJECTS)
+#   	ranlib $@
+#   endif
+#   endif
+# 
+# - For wxwidgets errors see here: https://wiki.wxwidgets.org/Compiling_wxWidgets_with_MinGW
+# - from the 3.1.0+ version you must pass "-lshlwapi -lversion" to the compiler
 #
-# 2) then you can compile wide under windows using this makefile and MinGW
-#
-# cd wide
-# cd src
-# mingw32-make -f makefile.gcc
-#
-# ########################################################################
+# ###############################################################################################
 
 
 # ################################################################
 # CONFIGURE THESE PARAMETERS TO MATCH YOUR WXWIDGETS INSTALLATION
 # ################################################################
 
-WXHOME := C:/wxWidgets-3.0.1
-OUTPUTPATH = C:/temp
+WXHOME := C:/wxWidgets-3.1.0
+OUTPUTPATH = C:/tmp
 
 # SETUP.H INCLUDED FOR STATIC
 SETUPH=-I$(WXHOME)/lib/gcc_lib/mswu
@@ -44,14 +61,17 @@ CONTRIB=-I$(WXHOME)/contrib/include
 TARGET := wide.exe
 DESTPATH = $(OUTPUTPATH)/$(TARGET)
 SOURCES := edit.cpp main.cpp prefs.cpp
-CPPFLAGS = -I$(WXHOME)/include $(SETUPH) $(CONTRIB) -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__ -DUNICODE=1 -O2 -mthreads  -DHAVE_W32API_H -DNDEBUG  
-CXXFLAGS = -L$(WXHOME)/lib/gcc_lib 
-LDFLAGS = -lwxmsw30u -lwxscintilla -lwxregexu -lm -lgdi32 -lcomdlg32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lopengl32 -mwindows  -lwxtiff -lwxjpeg -lwxpng -lwxzlib  -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32 -static-libgcc -static-libstdc++
+CPPFLAGS = -v -I$(WXHOME)/include/ $(SETUPH) $(CONTRIB) -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__ -DUNICODE=1 -O2 -mthreads  -DHAVE_W32API_H -DNDEBUG  
+CXXFLAGS = -L$(WXHOME)/lib/gcc_lib
+#LDFLAGS = -lwxmsw31u -lwxscintilla -lwxregexu -lm -lgdi32 -lcomdlg32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lopengl32 -mwindows -lwxtiff -lwxjpeg -lwxpng  -lwxzlib -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lshlwapi -lversion
+
+LDFLAGS = -lwxmsw31u -lwxscintilla -lwxregexu -mwindows -lwxtiff -lwxjpeg -lwxpng -lwxzlib -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lshlwapi -lversion
 
 all:
 	$(warning Building...)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(SOURCES) -o $(DESTPATH) $(LDFLAGS) wide.res
-
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(SOURCES) -o $(DESTPATH) $(LDFLAGS) 
+	$(STRIP) $(OUTPUTPATH)/$(TARGET)
+	
 clean: 
 	$(warning Cleaning...)
 	@$(RM) $(DESTPATH)
