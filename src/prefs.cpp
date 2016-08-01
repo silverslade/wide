@@ -184,12 +184,12 @@ const StyleInfo g_StylePrefs [] = {
     // mySTC_TYPE_STRING
     {(wxChar*)_T("String"),
      (wxChar*)_T("BROWN"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_STRING_EOL
     {(wxChar*)_T("String (EOL)"),
      (wxChar*)_T("BROWN"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_DELIMITER
     {(wxChar*)_T("Delimiter"),
@@ -245,8 +245,8 @@ const StyleInfo g_StylePrefs [] = {
 // Stringhe
     // mySTC_TYPE_UUID // PL: Non capisco perchè lo stile delle stringhe è definito qui
     {(wxChar*)_T("UUID"),
-     (wxChar*)_T("BROWN"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T("NAVY"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_VALUE
     {(wxChar*)_T("Value"),

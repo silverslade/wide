@@ -43,10 +43,10 @@
     <Configuration Name="Debug" CompilerType="MinGW ( MinGW )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
       <Compiler Options="--fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__ -DUNICODE=1" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
         <IncludePath Value="."/>
-        <IncludePath Value="C:/wxWidgets-3.0.1/contrib/include"/>
-        <IncludePath Value="C:/wxWidgets-3.0.1/include"/>
-        <IncludePath Value="C:/wxWidgets-3.0.1/lib/gcc_lib/mswu"/>
-        <IncludePath Value="C:/wxWidgets-3.0.1/"/>
+        <IncludePath Value="C:/wxWidgets-3.1.0/contrib/include"/>
+        <IncludePath Value="C:/wxWidgets-3.1.0/include"/>
+        <IncludePath Value="C:/wxWidgets-3.1.0/lib/gcc_lib/mswu"/>
+        <IncludePath Value="C:/wxWidgets-3.1.0/"/>
       </Compiler>
       <Linker Options="" Required="yes">
         <Library Value="-lwxmsw30u_stc -lwxmsw30u -lwxbase30u -lwxscintilla -lwxregexu  -lm -lgdi32 -lcomdlg32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lopengl32 -mwindows  -lwxtiff -lwxjpeg -lwxpng -lwxzlib  -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32 -static-libgcc -static-libstdc++"/>
@@ -81,7 +81,7 @@
         <ClangCmpFlagsC/>
         <ClangCmpFlags/>
         <ClangPP/>
-        <SearchPaths>C:\wxWidgets-3.0.1\include\</SearchPaths>
+        <SearchPaths>C:\wxWidgets-3.1.0\include\</SearchPaths>
       </Completion>
     </Configuration>
     <Configuration Name="Release" CompilerType="MinGW ( CodeLite-4.8.1 )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
