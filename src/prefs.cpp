@@ -33,7 +33,7 @@
 #include "defsext.h"     // Additional definitions
 #include "prefs.h"       // Preferences
 
-#define FONTSIZE 9
+#define FONTSIZE 10
 
 //============================================================================
 // declarations
@@ -121,8 +121,8 @@ const StyleInfo g_StylePrefs [] = {
 // Stringhe con '
     // mySTC_TYPE_WORD1
     {(wxChar*)_T("Keyword1"),
-     (wxChar*)_T("ORANGE"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
+     (wxChar*)_T("SEA GREEN"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_WORD2
     {(wxChar*)_T("Keyword2"),
@@ -178,28 +178,28 @@ const StyleInfo g_StylePrefs [] = {
 
     // mySTC_TYPE_CHARACTER_EOL
     {(wxChar*)_T("Character (EOL)"),
-     (wxChar*)_T("KHAKI"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("SEA GREEN"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_STRING
     {(wxChar*)_T("String"),
      (wxChar*)_T("BROWN"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
+     (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_STRING_EOL
     {(wxChar*)_T("String (EOL)"),
      (wxChar*)_T("BROWN"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
+     (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_DELIMITER
     {(wxChar*)_T("Delimiter"),
-     (wxChar*)_T("ORANGE"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
+     (wxChar*)_T("SEA GREEN"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_PUNCTUATION
     {(wxChar*)_T("Punctuation"),
-     (wxChar*)_T("ORANGE"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
+     (wxChar*)_T("SEA GREEN"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_OPERATOR
     {(wxChar*)_T("Operator"),
@@ -213,13 +213,13 @@ const StyleInfo g_StylePrefs [] = {
 
     // mySTC_TYPE_COMMAND
     {(wxChar*)_T("Command"),
-     (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
+     (wxChar*)_T("NAVY"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_IDENTIFIER
     {(wxChar*)_T("Identifier"),
-     (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
+     (wxChar*)_T("NAVY"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_LABEL
     {(wxChar*)_T("Label"),
@@ -227,10 +227,10 @@ const StyleInfo g_StylePrefs [] = {
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
 // WORDLIST 1
-    // mySTC_TYPE_NUMBER // E questi invece sono gli indicatori
+    // mySTC_TYPE_NUMBER
     {(wxChar*)_T("Number"),
      (wxChar*)_T("NAVY"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
+     (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_PARAMETER
     {(wxChar*)_T("Parameter"),
@@ -243,10 +243,10 @@ const StyleInfo g_StylePrefs [] = {
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
 // Stringhe
-    // mySTC_TYPE_UUID // PL: Non capisco perchè lo stile delle stringhe è definito qui
+    // mySTC_TYPE_UUID
     {(wxChar*)_T("UUID"),
-     (wxChar*)_T("NAVY"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
+     (wxChar*)_T("FIREBRICK"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_VALUE
     {(wxChar*)_T("Value"),

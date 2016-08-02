@@ -1772,7 +1772,12 @@ void MyFrame::LoadFile(wxString path, wxString name)
 {
     if (checkOpenFile(path)) return;
     Edit* stc = new Edit( auinotebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxNO_BORDER, path, this);
-    stc->LoadFile (path);
+    stc->LoadFile (path);    
+	#ifdef __WINDOWS__     
+	stc->ConvertEOLs(wxSTC_EOL_CRLF);
+	#else     
+	stc->ConvertEOLs(wxSTC_EOL_LF);
+	#endif 	
     
     setNewStc(stc);
    
@@ -1800,6 +1805,12 @@ void MyFrame::OnLoadFile(wxCommandEvent& WXUNUSED(event))
         
         Edit* stc = new Edit( auinotebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxNO_BORDER, path, this);
         stc->LoadFile (path);
+		#ifdef __WINDOWS__     
+		stc->ConvertEOLs(wxSTC_EOL_CRLF);
+		#else     
+		stc->ConvertEOLs(wxSTC_EOL_LF);
+		#endif 	
+
         
         setNewStc(stc);
         
@@ -2164,7 +2175,7 @@ wxMenuBar* MyFrame::CreateMenuBar()
     edit->Append(comment);
 
     // EDIT::UNCOMMENT
-    wxMenuItem *uncomment = new wxMenuItem(edit, ID_Uncomment, _T("&")+MENU_EDIT_UNCOMMENT+_T("\tCtrl+Shift+U"));
+    wxMenuItem *uncomment = new wxMenuItem(edit, ID_Uncomment, _T("&")+MENU_EDIT_UNCOMMENT+_T("\tCtrl+Shift+X"));
     //indent_l->SetBitmap(back_xpm);
     edit->Append(uncomment);
 
@@ -2179,7 +2190,7 @@ wxMenuBar* MyFrame::CreateMenuBar()
     search->Append(ID_GotoLine, _T("&")+MENU_SEARCH_FIND_GOTO_LINE+_T("\tCtrl+L"));
     search->AppendSeparator();
     search->Append(ID_NextMarker, _T("&")+MENU_SEARCH_FIND_NEXT_MARKER+_T("\tF2"));
-    wxMenuItem *marker = new wxMenuItem(search, ID_ToggleMarker, _T("&")+MENU_SEARCH_FIND_TOGGLE_MARKER+_T("\tCtrl+F2"));
+    wxMenuItem *marker = new wxMenuItem(search, ID_ToggleMarker, _T("&")+MENU_SEARCH_FIND_TOGGLE_MARKER+_T("\tShift+F2"));
     
     marker->SetBitmap(addbookm_xpm);
     search->Append(marker);        
