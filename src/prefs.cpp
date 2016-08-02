@@ -33,7 +33,7 @@
 #include "defsext.h"     // Additional definitions
 #include "prefs.h"       // Preferences
 
-#define FONTSIZE 10
+#define FONTSIZE 11
 
 //============================================================================
 // declarations
@@ -113,6 +113,7 @@ const int g_LanguagePrefsSize = WXSIZEOF(g_LanguagePrefs);
 //! style types
 const StyleInfo g_StylePrefs [] = {
 
+
     // mySTC_TYPE_DEFAULT
     {(wxChar*)_T("Default"),
      (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
@@ -121,17 +122,17 @@ const StyleInfo g_StylePrefs [] = {
 // Stringhe con '
     // mySTC_TYPE_WORD1
     {(wxChar*)_T("Keyword1"),
-     (wxChar*)_T("SEA GREEN"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("FIREBRICK"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_WORD2
     {(wxChar*)_T("Keyword2"),
-     (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("ORCHID"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_WORD3
     {(wxChar*)_T("Keyword3"),
-     (wxChar*)_T("BLUE"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("ORANGE RED"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_WORD4
@@ -178,27 +179,27 @@ const StyleInfo g_StylePrefs [] = {
 
     // mySTC_TYPE_CHARACTER_EOL
     {(wxChar*)_T("Character (EOL)"),
-     (wxChar*)_T("SEA GREEN"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("ORANGE RED"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
-    // mySTC_TYPE_STRING
+// mySTC_TYPE_STRING 
     {(wxChar*)_T("String"),
-     (wxChar*)_T("BROWN"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
-    // mySTC_TYPE_STRING_EOL
+// mySTC_TYPE_STRING_EOL (punteggiatura e parentesi)
     {(wxChar*)_T("String (EOL)"),
-     (wxChar*)_T("BROWN"), (wxChar*)_T("WHITE"),
-     (wxChar*)_T(""), FONTSIZE, 0, 0},
+     (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_DELIMITER
     {(wxChar*)_T("Delimiter"),
-     (wxChar*)_T("SEA GREEN"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("ORANGE RED"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_PUNCTUATION
     {(wxChar*)_T("Punctuation"),
-     (wxChar*)_T("SEA GREEN"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("ORANGE RED"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_OPERATOR
@@ -208,7 +209,7 @@ const StyleInfo g_StylePrefs [] = {
 
     // mySTC_TYPE_BRACE
     {(wxChar*)_T("Label"),
-     (wxChar*)_T("BLACK"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("ORANGE RED"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, mySTC_STYLE_BOLD, 0},
 
     // mySTC_TYPE_COMMAND
@@ -245,7 +246,7 @@ const StyleInfo g_StylePrefs [] = {
 // Stringhe
     // mySTC_TYPE_UUID
     {(wxChar*)_T("UUID"),
-     (wxChar*)_T("FIREBRICK"), (wxChar*)_T("WHITE"),
+     (wxChar*)_T("SEA GREEN"), (wxChar*)_T("WHITE"),
      (wxChar*)_T(""), FONTSIZE, 0, 0},
 
     // mySTC_TYPE_VALUE
