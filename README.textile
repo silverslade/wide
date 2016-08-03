@@ -97,7 +97,7 @@ h3. Install on Windows:
 h4. 1) Install mingw and wxwidgets 3.1.0
 
 * download and install TDM 5.1.0 from here http://tdm-gcc.tdragon.net/download 
-* download wxwidgets 3.0.1 or above from https://www.wxwidgets.org/downloads/
+* download wxwidgets 3.1.0 or above from https://www.wxwidgets.org/downloads/
 * unzip wxwidgets 3.1.0 (under c:/wxWidgets-3.1.0)
 * compile it
 
