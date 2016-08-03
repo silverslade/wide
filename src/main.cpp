@@ -257,7 +257,7 @@ void MyFrame::OnUncomment(wxCommandEvent& WXUNUSED(event)){
     for (int i = firstline; i <= lastline; i++)  {
         int linestart = e->PositionFromLine(i);
         int lineend = e->GetLineEndPosition(i);
-        wxString tline = e->GetTextRange(linestart, lineend);
+        wxString tline = e->GetTextRangeRaw(linestart, lineend);
         for (size_t j = 0; j < tline.Length(); j++) {
             if (tline[j] == '!') { tline.Remove(j,1); end--; break; }
             if (tline[j] != ' ' && tline[j] != '\t') break;
@@ -429,7 +429,7 @@ void MyFrame::SearchObject(bool globalflag){  //PL
             for (;;) {
                 //Edit* e = (Edit*) auinotebook->GetPage(auinotebook->GetSelection());
                 e = (Edit*) auinotebook->GetPage(searched);
-                wxString text = e->GetText();           
+                wxString text = e->GetTextRaw();           
                 if (showObjects) k = SearchRegularExpression(text, _T("\n+[ \t\f\v]*Object[ \t\n\r\f\v]+(->[ \t\n\r\f\v]+)*") + selected + _T("[ \t\n\r\f\v]"));
                 if (showProject) for (size_t i = 0; (k==0) && (i<projclasses.GetCount()); i++) {
                     wxString regexp = _T("\n+[ \t\f\v]*")+projclasses[i]+_T("[ \t\n\r\f\v]+(->[ \t\n\r\f\v]+)*") + selected + _T("[ \t\n\r\f\v]");
@@ -2010,7 +2010,7 @@ void MyFrame::OnUpdateTree()
     cid = tree->GetFirstVisibleItem();
     wxString firstvis = cid.IsOk()?tree->GetItemText(cid):_T(" ");
     
-    wxString text = e->GetText();
+    wxString text = e->GetTextRaw();
     tree->DeleteAllItems();    
     wxArrayTreeItemIds items;
     wxTreeItemId root = tree->AddRoot(wxT("Object Tree"), 0);
