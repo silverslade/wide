@@ -11,6 +11,48 @@
   #define NOMEAPPLICAZIONE "WIDE"  
   #define DESCRIZIONE "Wx Inform Development Environment"    
   #define CONFIG_FILE "wide.ini"  
+  
+  
+  #define NEWPROJECTCONTENT "###########################################################################\n\
+# Template for Wide Project File (Wide / Inform Pack)\n\
+#\n\
+###########################################################################\n\
+#\n\
+# Save this template as \"filename.wpf\" and use it as Wide Project \n\
+# \n\
+# Possible values:\n\
+#\n\
+# ZCODEVERSION (values 5 or 8) \n\
+#\n\
+# [FILES]     Add your files (inf o h) in this section\n\
+# [CLASSES]   Add your custom classes  (will be visible inside the object's tree)\n\
+# [KEYWORDS]  Add your custom keywords (will be highlighted inside Wide)\n\
+#\n\
+# See below for example values\n\
+#\n\
+###########################################################################\n\
+\n\
+# values:5 or 8\n\
+# set zcode version of your project\n\
+ZCODEVERSION=5\n\
+\n\
+# add here sources of your project\n\
+[FILES]\n\
+F00=example.inf\n\
+F01=example_game.inf\n\
+F02=example_menu.inf\n\
+\n\
+# add here your custom class: will be visible inside the object's tree\n\
+[CLASSES]\n\
+C00=Room\n\
+C01=Prop\n\
+C02=MyDoor\n\
+C03=NPC\n\
+\n\
+# add here your custom keywords\n\
+[KEYWORDS]\n\
+K00=attitude\n\
+K01=turnsinside"
 
   // ICONS
   #include "images/wide.xpm"
@@ -67,8 +109,9 @@ class MyFrame : public wxFrame {
         ID_Doc7,
         ID_Doc8,        
         ID_Tip,              
+        ID_CreateProject,       
         ID_OpenProject,           
-        ID_SaveProject,         
+        ID_RefreshProject,         
         ID_CloseProject,
         ID_CreateBlb,    
         ID_MakeAllBlb,
@@ -201,9 +244,12 @@ class MyFrame : public wxFrame {
     void OnSingleEdit (wxCommandEvent &event);    
 
     // Project Menu
+    void OnCreateProject(wxCommandEvent &event);
     void OnOpenProject(wxCommandEvent &event);
-    void OnSaveProject(wxCommandEvent &event);
+    void OnRefreshProject(wxCommandEvent &event);
     void OnCloseProject(wxCommandEvent &event);
+    void CloseAll();
+    void UpdateProject(wxString);
     
     // ZCode menu
     void OnCompile (wxCommandEvent &event);
@@ -310,8 +356,9 @@ class MyFrame : public wxFrame {
      wxString MENU_SEARCH_FIND_RESET_MARKERS;                            
 
      wxString MENU_PROJECT;
+     wxString MENU_PROJECT_NEW;
      wxString MENU_PROJECT_OPEN;
-     wxString MENU_PROJECT_SAVE;
+     wxString MENU_PROJECT_REFRESH;
      wxString MENU_PROJECT_CLOSE;          
      
      wxString MENU_LANGUAGE;
@@ -416,6 +463,7 @@ class MyFrame : public wxFrame {
      wxString mainFile;      
      wxArrayString projkeywords;
      wxArrayString projclasses;
+     wxString projectfile;      
      
      bool inform_error;            
 

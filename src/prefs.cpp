@@ -67,7 +67,7 @@ const wxChar* InformWordlist3 = _T("");
 //----------------------------------------------------------------------------
 //! languages
 const LanguageInfo g_LanguagePrefs [] = {
-    // C++
+    // INFORM
     {(wxChar*)_T("INFORM"),
      (wxChar*)_T("*.h;*.inf;*.INF;*.H"),
      //wxSTC_LEX_OCTAVE,
@@ -104,7 +104,43 @@ const LanguageInfo g_LanguagePrefs [] = {
       {-1, NULL},
       {-1, NULL},
       {-1, NULL}},
-     mySTC_FOLD_COMMENT | mySTC_FOLD_COMPACT | mySTC_FOLD_PREPROC}    
+     mySTC_FOLD_COMMENT | mySTC_FOLD_COMPACT | mySTC_FOLD_PREPROC},
+    {(wxChar*)_T("INFORM PROJECT"),
+     (wxChar*)_T("*.wpf;*.WPF"),
+     wxSTC_LEX_PROPERTIES,
+     {{mySTC_TYPE_DEFAULT, NULL},
+      {mySTC_TYPE_COMMENT, NULL},
+      {mySTC_TYPE_COMMENT_LINE, NULL},
+      {mySTC_TYPE_COMMENT_DOC, NULL},
+      {mySTC_TYPE_NUMBER, NULL},
+      {mySTC_TYPE_WORD1, InformWordlist1}, // KEYWORDS
+      {mySTC_TYPE_STRING, NULL},
+      {mySTC_TYPE_CHARACTER, NULL},
+      {mySTC_TYPE_UUID, NULL},
+      {mySTC_TYPE_PREPROCESSOR, NULL},
+      {mySTC_TYPE_OPERATOR, NULL},
+      {mySTC_TYPE_IDENTIFIER, NULL},
+      {mySTC_TYPE_STRING_EOL, NULL},
+      {mySTC_TYPE_DEFAULT, NULL}, // VERBATIM
+      {mySTC_TYPE_REGEX, NULL},
+      {mySTC_TYPE_COMMENT_SPECIAL, NULL}, // DOXY
+      {mySTC_TYPE_WORD2, InformWordlist2}, // EXTRA WORDS
+      {mySTC_TYPE_WORD3, InformWordlist3}, // DOXY KEYWORDS
+      {mySTC_TYPE_ERROR, NULL}, // KEYWORDS ERROR
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL},
+      {-1, NULL}},
+     mySTC_FOLD_COMMENT | mySTC_FOLD_COMPACT | mySTC_FOLD_PREPROC}
     };
 
 const int g_LanguagePrefsSize = WXSIZEOF(g_LanguagePrefs);

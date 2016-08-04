@@ -156,8 +156,9 @@ BEGIN_EVENT_TABLE(MyFrame, wxFrame)
     EVT_MENU(MyFrame::ID_FindReplace,  MyFrame::FindReplace)    //PL    
 
     // Project Menu
+    EVT_MENU (ID_CreateProject,          MyFrame::OnCreateProject)
     EVT_MENU (ID_OpenProject,            MyFrame::OnOpenProject)
-    EVT_MENU (ID_SaveProject,            MyFrame::OnSaveProject)
+    EVT_MENU (ID_RefreshProject,         MyFrame::OnRefreshProject)
     EVT_MENU (ID_CloseProject,           MyFrame::OnCloseProject)        
     
     // ZCode Menu    
@@ -669,8 +670,9 @@ void MyFrame::LoadConfiguration() {
 
     // PROJECT MENU
     MENU_PROJECT = pConfig->Read(language+_T("_")+_T("MENU_PROJECT"),_T(""))!=_T("")?pConfig->Read(language+_T("_")+_T("MENU_PROJECT"),_T("")):_T("Project");
+    MENU_PROJECT_NEW = pConfig->Read(language+_T("_")+_T("MENU_PROJECT_NEW"),_T(""))!=_T("")?pConfig->Read(language+_T("_")+_T("MENU_PROJECT_NEW"),_T("")):_T("New/Edit Project"); 
     MENU_PROJECT_OPEN = pConfig->Read(language+_T("_")+_T("MENU_PROJECT_OPEN"),_T(""))!=_T("")?pConfig->Read(language+_T("_")+_T("MENU_PROJECT_OPEN"),_T("")):_T("Open Project"); 
-    MENU_PROJECT_SAVE = pConfig->Read(language+_T("_")+_T("MENU_PROJECT_SAVE"),_T(""))!=_T("")?pConfig->Read(language+_T("_")+_T("MENU_PROJECT_SAVE"),_T("")):_T("Save Project"); 
+    MENU_PROJECT_REFRESH = pConfig->Read(language+_T("_")+_T("MENU_PROJECT_REFRESH"),_T(""))!=_T("")?pConfig->Read(language+_T("_")+_T("MENU_PROJECT_REFRESH"),_T("")):_T("Refresh Project"); 
     MENU_PROJECT_CLOSE = pConfig->Read(language+_T("_")+_T("MENU_PROJECT_CLOSE"),_T(""))!=_T("")?pConfig->Read(language+_T("_")+_T("MENU_PROJECT_CLOSE"),_T("")):_T("Close Project");
 
     
@@ -1825,97 +1827,158 @@ void MyFrame::OnLoadFile(wxCommandEvent& WXUNUSED(event))
 
 // MENU PROJECT
 
+// CREATE OR EDIT A PROJECT FILE
+void MyFrame::OnCreateProject(wxCommandEvent& WXUNUSED(event)) {
+    wxFileDialog* fd = new wxFileDialog(this, _T("New File"),_T(""),_T(""),_T("Inform Project Files (*.wpf)|*.wpf"),
+    wxFD_SAVE,wxDefaultPosition,wxDefaultSize,_T("filedlg"));
+    wxString path,name;
+    if (fd->ShowModal() == wxID_OK ){
+        path = fd->GetPath();
+        name = fd->GetFilename();        
+        if (!wxFile::Exists(path)){
+            // CREATE A NEW FILE
+            wxFile file;        
+            file.Create(path, false, wxS_DEFAULT);
+            
+            // init values
+            bool success = file.Write(NEWPROJECTCONTENT, wxConvISO8859_1);
+        }
+        // OPEN EXISTING FILE
+        //wxMessageBox (ERRORS_FILEEXISTS, ERRORS_FILEACCESSERROR,  wxOK | wxICON_ERROR);
+        this->LoadFile(path,name);
+        return;
+    }    
+}
+
+// Close all file
+void MyFrame::CloseAll() {
+    // clear all project stuff
+    OnClear();
+    OnOutput("Closing All files...");
+    mainFile = _T("");
+    projclasses.Empty();
+    projkeywords.Empty();
+
+    // close all files
+    int pannelli = auinotebook->GetPageCount();
+    for (int i=0; i<=pannelli-1 ;i++) { 
+        Edit* e = (Edit*) auinotebook->GetPage(i);
+        wxString titolo = auinotebook->GetPageText(i);
+        if (e) {
+            if (e->Modified()) e->SaveFile();
+            if (e->Modified()) {
+                wxMessageBox (ERRORS_SAVEERROR, ERRORS_CLOSEABORT, wxOK | wxICON_EXCLAMATION);
+                continue;
+            }
+            e->Close(true);
+        }
+    }
+    auinotebook->DeleteAllPages();
+}
+
+// Update project loading wpf
+void MyFrame::UpdateProject(wxString path) {
+    CloseAll();
+    wxFileConfig* projfile = new wxFileConfig(_(NOMEAPPLICAZIONE), _(NOMEAPPLICAZIONE), path, _T(""), wxCONFIG_USE_RELATIVE_PATH, wxConvUTF8);
+    
+    //wxConfigBase::Set(projfile);
+    //projfile->SetPath(_T("/"));     
+    wxString s, str;
+    bool bCont; long dummy;
+    int zc = 0;
+    zc = projfile->Read(_T("ZCODEVERSION"), 1l);
+    switch (zc) {
+        case 8:
+        zcodeversion=_T(".z8");
+        zcodeswitch=_T("-v8");
+        zcodemenu->Check(ID_ZcodeVersion8, true);
+        break;
+        case 5:
+        zcodeversion=_T(".z5");
+        zcodeswitch=_T("-v5");
+        zcodemenu->Check(ID_ZcodeVersion5, true);
+        break;
+    }        
+    projfile->SetPath(_T("/CLASSES"));
+    bCont = projfile->GetFirstEntry(str, dummy);
+    while(bCont){
+        s = projfile->Read(str,_T(""));
+        projclasses.Add(s);
+        bCont = projfile->GetNextEntry(str, dummy);
+    }        
+    projfile->SetPath(_T("/KEYWORDS"));
+    bCont = projfile->GetFirstEntry(str, dummy);
+    while(bCont){
+        s = projfile->Read(str,_T(""));
+        projkeywords.Add(s);
+        bCont = projfile->GetNextEntry(str, dummy);
+    }        
+    projfile->SetPath(_T("/FILES"));
+    bCont = projfile->GetFirstEntry(str, dummy);
+    while(bCont){
+        s = projfile->Read(str,_T(""));
+
+        // Damned backslash
+        #ifdef __WINDOWS__     
+        str = path.Mid(0,path.Find('\\',true)+1) + s;
+        #else     
+        str = path.Mid(0,path.Find('/',true)+1) + s;
+        #endif  	  
+
+        LoadFile(str,s);
+        if (mainFile == _T("")) {
+        mainFile = str;
+        OnOutput(MESSAGES_USINGMAINFILE+_T(" [")+mainFile+_T("] "));
+        }
+        bCont = projfile->GetNextEntry(str, dummy);
+    }
+    //wxMessageBox (_(path), _("Close abort"),  wxOK | wxICON_EXCLAMATION);
+}
+
 void MyFrame::OnOpenProject(wxCommandEvent& WXUNUSED(event)) {
     wxFileDialog* fd = new wxFileDialog(this, _T("Open Wide Project"),_T(""),_T(""),_T("Wide Project Files (*.wpf)|*.wpf|All Files (*.*)|*.*"),
     wxFD_DEFAULT_STYLE,wxDefaultPosition,wxDefaultSize,_T("filedlg"));    
     if (fd->ShowModal() == wxID_OK ){
         wxString path = fd->GetPath();
-        wxString name = fd->GetFilename();        
-        OnClear();
-        mainFile = _T("");
-        projclasses.Empty();
-        projkeywords.Empty();
-        
-        wxFileConfig* projfile = new wxFileConfig(
-        _(NOMEAPPLICAZIONE), _(NOMEAPPLICAZIONE),
-        path, _T(""), wxCONFIG_USE_RELATIVE_PATH, wxConvUTF8);
-        //wxConfigBase::Set(projfile);
-        //projfile->SetPath(_T("/")); 
-
-        wxString s, str;
-        bool bCont; long dummy;
-        int zc = 0;
-        zc = projfile->Read(_T("ZCODEVERSION"), 1l);
-        switch (zc) {
-          case 8:
-            zcodeversion=_T(".z8");
-            zcodeswitch=_T("-v8");
-            zcodemenu->Check(ID_ZcodeVersion8, true);
-            break;
-          case 5:
-            zcodeversion=_T(".z5");
-            zcodeswitch=_T("-v5");
-            zcodemenu->Check(ID_ZcodeVersion5, true);
-            break;
-        }        
-        projfile->SetPath(_T("/CLASSES"));
-        bCont = projfile->GetFirstEntry(str, dummy);
-        while(bCont){
-          s = projfile->Read(str,_T(""));
-          projclasses.Add(s);
-          bCont = projfile->GetNextEntry(str, dummy);
-        }        
-        projfile->SetPath(_T("/KEYWORDS"));
-        bCont = projfile->GetFirstEntry(str, dummy);
-        while(bCont){
-          s = projfile->Read(str,_T(""));
-          projkeywords.Add(s);
-          bCont = projfile->GetNextEntry(str, dummy);
-        }        
-        projfile->SetPath(_T("/FILES"));
-        bCont = projfile->GetFirstEntry(str, dummy);
-        while(bCont){
-          s = projfile->Read(str,_T(""));
-	  
-	  // Damned backslash
-	  #ifdef __WINDOWS__     
-	    str = path.Mid(0,path.Find('\\',true)+1) + s;
-	  #else     
-	    str = path.Mid(0,path.Find('/',true)+1) + s;
-	  #endif  	  
-
-          LoadFile(str,s);
-          if (mainFile == _T("")) {
-                mainFile = str;
-                OnOutput(MESSAGES_USINGMAINFILE+_T(" [")+mainFile+_T("] "));
-          }
-          bCont = projfile->GetNextEntry(str, dummy);
-        }
-        //wxMessageBox (_(path), _("Close abort"),  wxOK | wxICON_EXCLAMATION);
-
+        wxString name = fd->GetFilename();     
+        projectfile = path.Clone();
+        UpdateProject(path);
     }    
     //wxConfigBase::Set(pConfig);    
 }
   
 
-
-void MyFrame::OnSaveProject(wxCommandEvent& WXUNUSED(event))
+// If project exists -> close all file and reload it
+void MyFrame::OnRefreshProject(wxCommandEvent& WXUNUSED(event))
 {
+    if (!projectfile.IsNull() && projectfile != _T("")){
+        // reload
+        UpdateProject(projectfile);
+    }
+    else{
+        wxMessageBox (_T("No Projecty file loaded"), "Warning",  wxOK | wxICON_INFORMATION);        
+    }            
 }
+
 
 void MyFrame::OnCloseProject(wxCommandEvent& WXUNUSED(event))
 {
+    CloseAll();
+    projectfile = _T("");
+    /*
     projclasses.Empty();
     projkeywords.Empty();
     if (mainFile!=_T("")){
         wxMessageBox (mainFile, MESSAGES_REMOVEMAINFILE,  wxOK | wxICON_INFORMATION);            
         mainFile=_T("");
         OnClear();
-        OnOutput(MESSAGES_MAINFILEREMOVED);        
+        OnOutput(MESSAGES_MAINFILEREMOVED);       
+        // TODO: close all files?
     }
     else{
         wxMessageBox (MESSAGES_NOPROJECTOPENED,MESSAGES_WARNING, wxOK | wxICON_WARNING);    
     }
+     */
 }
 
 
@@ -2198,8 +2261,9 @@ wxMenuBar* MyFrame::CreateMenuBar()
 
     // PROJECT MENU
     wxMenu* project = new wxMenu;
+    project->Append (ID_CreateProject, _T("&")+MENU_PROJECT_NEW);
     project->Append (ID_OpenProject, _T("&")+MENU_PROJECT_OPEN+_T("\tCtrl+P"));
-    project->Append (ID_SaveProject, _T("&")+MENU_PROJECT_SAVE);
+    project->Append (ID_RefreshProject, _T("&")+MENU_PROJECT_REFRESH);
     project->Append (ID_CloseProject, _T("&")+MENU_PROJECT_CLOSE);
        
     // ZCODE MENU
