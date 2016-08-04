@@ -124,15 +124,13 @@ instead of
 
 
 To fix the comment line problem (comment ! followed by =)
-Modify file <wxWidgets-3.1.0>src\stc\scintilla\lexers\LexMatlab.cxx
+Modify file wxWidgets-3.1.0\src\stc\scintilla\lexers\LexMatlab.cxx
 
 Modify the line
-<pre><code>
-            } else if (sc.ch == '!' && sc.chNext != '=' ) {
+<pre><code>   } else if (sc.ch == '!' && sc.chNext != '=' ) {
 </code></pre>
 in           
-<pre><code>
-            } else if (sc.ch == '!') {
+<pre><code>   } else if (sc.ch == '!') {
 </code></pre>
 
 h4. 2) install GIT
