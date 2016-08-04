@@ -1874,6 +1874,7 @@ void MyFrame::CloseAll() {
         }
     }
     auinotebook->DeleteAllPages();
+    tree->DeleteAllItems(); 
 }
 
 // Update project loading wpf
