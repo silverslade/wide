@@ -1957,7 +1957,7 @@ void MyFrame::OnRefreshProject(wxCommandEvent& WXUNUSED(event))
         UpdateProject(projectfile);
     }
     else{
-        wxMessageBox (_T("No Projecty file loaded"), "Warning",  wxOK | wxICON_INFORMATION);        
+        wxMessageBox (MESSAGES_NOPROJECTOPENED, MESSAGES_WARNING,  wxOK | wxICON_INFORMATION);        
     }            
 }
 
