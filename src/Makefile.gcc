@@ -65,7 +65,7 @@ CPPFLAGS = -v -I$(WXHOME)/include/ $(SETUPH) $(CONTRIB) -fno-exceptions -fno-pcc
 CXXFLAGS = -L$(WXHOME)/lib/gcc_lib
 #LDFLAGS = -lwxmsw31u -lwxscintilla -lwxregexu -lm -lgdi32 -lcomdlg32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lopengl32 -mwindows -lwxtiff -lwxjpeg -lwxpng  -lwxzlib -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lshlwapi -lversion
 
-LDFLAGS = -lwxmsw31u -lwxscintilla -lwxregexu -mwindows -lwxtiff -lwxjpeg -lwxpng -lwxzlib -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lshlwapi -lversion
+LDFLAGS = -lwxmsw31u -lwxscintilla -lwxregexu -mwindows -lwxtiff -lwxjpeg -lwxpng -lwxzlib -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lshlwapi -lversion -static-libgcc -static-libstdc++
 
 all:
 	$(warning Building...)
