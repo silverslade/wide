@@ -69,7 +69,7 @@ const wxChar* InformWordlist3 = _T("");
 const LanguageInfo g_LanguagePrefs [] = {
     // INFORM
     {(wxChar*)_T("INFORM"),
-     (wxChar*)_T("*.h;*.inf;*.INF;*.H"),
+     (wxChar*)_T("*.h;*.inf;*.INF;*.H;*.res;*.RES"),
      //wxSTC_LEX_OCTAVE,
      wxSTC_LEX_MATLAB,
      {{mySTC_TYPE_DEFAULT, NULL},
