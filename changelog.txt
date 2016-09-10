@@ -4,12 +4,17 @@ CHANGELOG WIDE
 NF  = New Feature
 FIX = Bug Fix
 
+2016-09-10
+- [NF] project menues (create, update, change "wide project files" inside the wide editor)
+- [FIX] Fixed setSelection problem (when selecting from left tree's objects)
+- [NF] Added Syntax Highlighting for *.res files
+
 2016-08-02
 - [FIX] merges from Paolo Lucchesi stc->ConvertEOLs(2)
 - [FIX] merges from Paolo Lucchesi font colors
 
 2016-08-01
-- update makefile to wxwidgets 3.1.0 version
+- [NF] updated makefile to wxwidgets 3.1.0 version
 - [FIX] error in function "createblb" with spaces in path
 
 2014-09-03 
