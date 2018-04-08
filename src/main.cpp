@@ -1990,7 +1990,7 @@ void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
     info.SetName(_(NOMEAPPLICAZIONE));
     info.SetVersion(_(VERSIONE));
     info.SetDescription(_(DESCRIZIONE));
-    info.SetCopyright(_T("(C) 2008 - 2016 Alessandro Schillaci"));
+    info.SetCopyright(_T("(C) 2008 - 2018 Alessandro Schillaci"));
     info.SetWebSite(_T("https://github.com/silverslade/wide"), _T("Home page"));
     info.AddDeveloper(_T("Alessandro Schillaci"));
     info.AddDeveloper(_T("Paolo Lucchesi"));

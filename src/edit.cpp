@@ -420,7 +420,7 @@ void Edit::OnCharAdded (wxStyledTextEvent &event) {
 		i = -1;
 		if (chr < 0 && chr >= -96) i = 96+chr;   // 256+chr-160;
 		if (chr >= 65440 && chr < 65536) i = chr-65440;
-		if (*hklist[i] != '@') i = -1;
+		if (i>=0 && i<96) if (*hklist[i] != '@') i = -1;
 		if (i>=0 && i<96) {
 			zstr = wxString::FromUTF8(hklist[i]);
 			found = true;
