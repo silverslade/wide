@@ -67,17 +67,13 @@ sudo apt-get install wx3.0-headers
 sudo apt-get install libwxgtk3.0-0v5
 sudo apt-get install libwxgtk3.0-dev
 
-mkdir wide
-cd wide
-git clone https://github.com/silverslade/wide
-cd wide
-cd src
-make
 </code></pre>
 
 h4. 2) clone the wide repository 
 
-<pre><code>git clone https://github.com/silverslade/wide
+<pre><code>mkdir wide
+cd wide
+git clone https://github.com/silverslade/wide
 </code></pre>
 
 You can use a git client (http://git-cola.github.io/)
