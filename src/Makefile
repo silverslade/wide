@@ -7,11 +7,11 @@ CXX   = g++
 STRIP = strip
 PARAMS = -DSHARED=0 -DRUNTIME_LIBS=static -DMONOLITHIC=1 -DUNICODE=1 
 
-WX_FLAGS = `wx-config --debug=no --cxxflags`
-WX_LIBS  = `wx-config --debug=no --libs aui,stc`
+WX_FLAGS = `wx-config-gtk3 --debug=no --cxxflags`
+WX_LIBS  = `wx-config-gtk3 --debug=no --libs aui,stc`
 
 # UNCOMMENT THIS IN CASE OF LINKING ERRORS
-WX_LIBS =  -pthread -Wl,-O1,--sort-common,-z,relro -lwx_gtk2u_richtext-3.0 -lwx_gtk2u_aui-3.0 -lwx_gtk2u_xrc-3.0 -lwx_gtk2u_qa-3.0 -lwx_gtk2u_html-3.0 -lwx_gtk2u_adv-3.0 -lwx_gtk2u_core-3.0 -lwx_baseu_xml-3.0 -lwx_baseu_net-3.0 -lwx_baseu-3.0  -lwx_gtk2u_aui-3.0 -lwx_gtk2u_stc-3.0 -lwx_baseu-3.0 
+WX_LIBS =  -pthread -Wl,-O1,--sort-common,-z,relro -lwx_gtk3u_richtext-3.0 -lwx_gtk3u_aui-3.0 -lwx_gtk3u_xrc-3.0 -lwx_gtk3u_qa-3.0 -lwx_gtk3u_html-3.0 -lwx_gtk3u_adv-3.0 -lwx_gtk3u_core-3.0 -lwx_baseu_xml-3.0 -lwx_baseu_net-3.0 -lwx_baseu-3.0  -lwx_gtk3u_aui-3.0 -lwx_gtk3u_stc-3.0 -lwx_baseu-3.0 
 
 CXXFLAGS = $(WX_FLAGS) 
 LIBS     = $(WX_LIBS)
